@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MainProvider from "@/src/providers/MainProvider";
+import NextTopLoader from 'nextjs-toploader';
+import localFont from "next/font/local";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const myFont = localFont({
+  src: "../src/fonts/woff/iranyekanwebmediumfanum.woff",
 });
 
 const geistMono = Geist_Mono({
@@ -24,10 +31,16 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      dir="rtl"
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${myFont.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body>
+        <NextTopLoader color="#C97B8B" height={4} showSpinner={false} /> 
+         <MainProvider>
+            {children}
+         </MainProvider>
+      </body>
     </html>
   );
 }

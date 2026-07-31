@@ -1,0 +1,21 @@
+.custom-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: #8B5CF6;
+    border-radius: 8px;
+    
+  }
+  
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: #333;
+  }
+
+  .ck-editor__editable_inline {
+    min-height: 300px !important;
+}

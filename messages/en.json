@@ -1,0 +1,91 @@
+{
+  "MainPage": {
+    "text_one": "Hello, I'm",
+    "btn_myprojects": "Explore My Projects",
+    "btn_contact_me": "Contact Me",
+    "work": "My Work",
+    "titles": {
+      "about_me": "About Me",
+      "myskills": "Skills",
+      "projects": "Featured Projects",
+      "blog": "Latest Articles",
+      "all": "View All"
+    }
+  },
+  "AboutMe": {
+    "me": "Me",
+    "aboutMe": "About Me",
+    "experience": "Years of Experience",
+    "projects": "Completed Projects",
+    "teck": "Technologies",
+    "resume": "Download Resume"
+  },
+  "ContactMe": {
+    "keepInToutch": "Keep in Touch",
+    "contact": "Contact Me",
+    "phone": "Phone",
+    "mail": "Email",
+    "experience": "Experience",
+    "city": "City",
+    "name": "Full Name",
+    "phoneNum": "Phone Number",
+    "subject": "Subject",
+    "message": "Write your message...",
+    "send": "Send Message"
+  },
+  "sideBar": {
+    "home": "Home",
+    "about_me": "About Me",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact Me",
+    "login": "Login",
+    "panel": "Admin Dashboard",
+    "resume": "Download Resume"
+  },
+ "projectArchive": {
+  "title": "My Projects",
+  "desc": "Every project is the result of experience, careful planning, and precise execution. On this page, you can explore a selection of my work and gain insight into my approach to design, development, and professional standards.",
+  "back" : "back"
+},
+"blogArchive": {
+  "title": "Blog",
+  "desc": "This is where I share my knowledge, experience, and passion for programming. From tutorials and useful development tools to discussions of real-world challenges and practical web development solutions, you'll find a variety of articles to explore here.",
+  "back": "Back"
+},
+
+"Filter" : {
+    "search" : "Search ...."
+  },
+  "PostLink": {
+  "back": "Previous",
+  "next": "Next",
+  "share": "Share this post"
+},
+"searchProject": {
+  "title": "Search Projects",
+  "desc": "Find the projects you're looking for here.",
+  "back": "Back",
+  "noResult": "No results found",
+  "try": "No projects matched your search. Please try a different keyword or filter.",
+    "skill" :"skills",
+     "search" : "Search"
+},
+"singleProject": {
+  "website": "Website",
+  "demo": "Live Demo",
+  "role": "Role",
+  "time": "Duration",
+  "start_date": "Start Date",
+  "boss": "Employer",
+    "desc": "Project Description",
+  "benefits": "Project Features",
+    "video": "Project Video",
+    "gallery": "Project Gallery",
+    "skills": "Technologies Used",
+    "info": "Additional Information",
+    "moreProject": "Have a Project in Mind?",
+    "partnerShip": "Let's Work Together on Your Project",
+    "callMe": "Contact Me"
+}
+}
