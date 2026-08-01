@@ -1,25 +1,17 @@
 "use client";
-import SalonCard from "./SalonCard";
 import SectionTitle from "./ui/SectionTitle";
+import ServiceCard from "./ServiceCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
-export default function PopularSalon() {
+export default function Service() {
   return (
     <section className="mt-18 container-c">
-      <SectionTitle
-        title={"Popular Salons"}
-        link_name={"View All Salons"}
-        href="/salons"
-      />
+      <SectionTitle title={`Services`} link_name={`View All Services`} />
 
       <Swiper
-        modules={[Navigation, Pagination]}
-        navigation
+      
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -27,37 +19,49 @@ export default function PopularSalon() {
         spaceBetween={24}
         breakpoints={{
           0: {
-            slidesPerView: 1,
+            slidesPerView: 2,
           },
           640: {
             slidesPerView: 2,
           },
           768: {
-            slidesPerView: 2,
-          },
-          1024: {
             slidesPerView: 3,
           },
+          1024: {
+            slidesPerView: 6,
+          },
           1280: {
-            slidesPerView: 4,
+            slidesPerView: 7,
           },
         }}
         className="mt-3"
       >
         <SwiperSlide className="py-4">
-          <SalonCard />
+          <ServiceCard />
         </SwiperSlide>
         <SwiperSlide className="py-4">
-          <SalonCard />
+          <ServiceCard />
         </SwiperSlide>
         <SwiperSlide className="py-4">
-          <SalonCard />
+          <ServiceCard />
         </SwiperSlide>
         <SwiperSlide className="py-4">
-          <SalonCard />
+          <ServiceCard />
         </SwiperSlide>
         <SwiperSlide className="py-4">
-          <SalonCard />
+          <ServiceCard />
+        </SwiperSlide>
+        <SwiperSlide className="py-4">
+          <ServiceCard />
+        </SwiperSlide>
+        <SwiperSlide className="py-4">
+          <ServiceCard />
+        </SwiperSlide>
+        <SwiperSlide className="py-4">
+          <ServiceCard />
+        </SwiperSlide>
+        <SwiperSlide className="py-4">
+          <ServiceCard />
         </SwiperSlide>
       </Swiper>
     </section>

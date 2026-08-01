@@ -6,3 +6,61 @@
 }
 
 
+.explain-bg{
+  background-image: url('/images/bg-flower.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+ 
+.swiper-button-prev,
+.swiper-button-next {
+  
+  width: 42px;
+  height: 42px;
+
+  border-radius: 10px;
+
+  background: #C97B8B;
+
+  border: 1px solid #F0E8E1;
+
+  color: #ffff !important;
+
+
+  transition: all .3s ease;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 12px !important;
+  font-weight: 900;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: #B96A7B;
+
+  color: white !important;
+
+  box-shadow:
+    0 0 20px #B96A7B,
+    0 0 40px #B96A7B;
+
+  scale: 1.05;
+}
+
+
+.swiper-button-next svg{
+  width: 14px!important;
+  height: 14px!important;
+}
+
+
+.swiper-button-prev svg{
+  width: 14px!important;
+  height: 14px!important;
+}
+
+

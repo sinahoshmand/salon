@@ -54,9 +54,8 @@ export default function RootLayout({
     <html
       dir="ltr"
       lang="en"
-      className={`${playfair.className} h-full antialiased`}
     >
-      <body>
+      <body className={`${playfair.className} h-full antialiased`}>
         <NextTopLoader color="#C97B8B" height={4} showSpinner={false} /> 
          <MainProvider>
             {children}

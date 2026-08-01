@@ -9,9 +9,10 @@ type Props = {
 
 export default function MainLayout({ children }: Props) {
   return (
-    <main className="bg-[var(--bg)] h-full">
+    <main className="bg-[var(--bg)]  min-h-screen">
       <Header />
       {children}
+      <div className="h-1 w-full bg-[var(--border)]"></div>
       <Footer />
     </main>
   );
