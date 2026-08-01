@@ -39,6 +39,7 @@ export const authOptions : AuthOptions = {
 
         return {
           id: data.user.id,
+          role : data.user.role,
           name: data.user.name,
           mobile: data.user.mobile,
           accessToken: data.token,
@@ -57,6 +58,7 @@ export const authOptions : AuthOptions = {
         token.id = user.id;
         token.mobile = user.mobile;
         token.accessToken = user.accessToken;
+        token.role = user.role
       }
 
       return token;
@@ -66,7 +68,7 @@ export const authOptions : AuthOptions = {
       session.user.id = token.id;
       session.user.mobile = token.mobile;
       session.accessToken = token.accessToken;
-
+      session.role = token.role
       return session;
     },
   },

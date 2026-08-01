@@ -16,3 +16,48 @@
     --border : #F0E8E1;
   }
 
+  body{
+    height: 3000px;
+  }
+
+ .container-c {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 12px;
+}
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+    .container-c {
+        max-width: 540px;
+    }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+    .container-c {
+        max-width: 720px;
+    }
+}
+
+/* Large devices (≥992px) */
+@media (min-width: 992px) {
+    .container-c {
+        max-width: 960px;
+    }
+}
+
+/* X-Large devices (≥1200px) */
+@media (min-width: 1200px) {
+    .container-c {
+        max-width: 1140px;
+    }
+}
+
+/* XX-Large devices (≥1400px) */
+@media (min-width: 1400px) {
+    .container-c {
+        max-width: 1320px;
+    }
+}
+
