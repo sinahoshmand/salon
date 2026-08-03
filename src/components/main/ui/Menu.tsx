@@ -79,7 +79,7 @@ export default function Menu() {
                 <Link
                   href={menu.href}
                   className={`
-                    text-[15px] font-medium transition-all duration-300
+                    text-[15px]  font-bold transition-all duration-300
                     ${
                       active
                         ? "text-[var(--primary)]"
@@ -118,8 +118,10 @@ export default function Menu() {
             className="
             px-4 py-2.5
             rounded-lg
-            bg-[var(--champagne-gold)]
-            text-white
+            bg-[var(--bg)]
+            border
+            border-[var(--border)]
+            text-[var(--text)]
             text-[14px]
             font-medium
             transition gap-2
@@ -127,9 +129,9 @@ export default function Menu() {
             hover:opacity-90
           "
           >
-            <FaGlobe color="var(--bg)" size={15} />
+            <FaGlobe color="var(--text)" size={15} />
             {locale === "en" ? "English" : "فارسی"}
-            {open ? (<BiChevronDown color="var(--bg)" size={18} />) : (<BiChevronUp color="var(--bg)" size={18} />)}
+            {open ? (<BiChevronDown color="var(--text)" size={18} />) : (<BiChevronUp color="var(--text)" size={18} />)}
           </button>
           {open &&
           <div className="absolute top-12 left-0 z-20 w-44 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-2 shadow-lg">
@@ -169,7 +171,7 @@ export default function Menu() {
           className="
             px-6 py-2.5
             rounded-lg
-            border border-[var(--border)]
+            border border-[var(--primary)]
             bg-[var(--bg)]
             text-[var(--primary)]
             font-medium

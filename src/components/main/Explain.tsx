@@ -141,7 +141,7 @@ function Explain2() {
         backgroundSize : "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="mt-18 container-c   rounded-[13px]"
+      className="mt-13 container-c   rounded-[13px]"
     >
       <div className="grid gap-6.5 grid-cols-12 px-6 py-6 relative">
         <div className="col-span-4">
@@ -167,7 +167,7 @@ function Explain2() {
                 needs.
               </p>
 
-              <div className="w-[80px] bg-[var(--primary)] h-[1px] rotate-90 left-2  absolute"></div>
+              <div className="w-[70px] bg-[var(--primary)] h-[1px] rotate-90 left-3  absolute"></div>
             </div>
           </div>
            {/* items */}
@@ -184,7 +184,7 @@ function Explain2() {
               <p className="mt-1 text-[14px] leading-6 text-[var(--secondary-text)]">
                  Choose your preferred date and time slot
               </p>
-              <div className="w-[80px] bg-[var(--primary)] h-[1px] rotate-90 left-2  absolute"></div>
+              <div className="w-[70px] bg-[var(--primary)] h-[1px]  rotate-90 left-3  absolute"></div>
             </div>
           </div>
            {/* items */}

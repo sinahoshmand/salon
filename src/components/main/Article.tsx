@@ -3,7 +3,7 @@ import SectionTitle from "./ui/SectionTitle";
 
 export default function Article() {
   return (
-    <section className="mt-18 container-c pb-20">
+    <section className="mt-13 container-c pb-20">
       <SectionTitle
         title="Beauty Tips & Last Trends"
         link_name="View All Articles"

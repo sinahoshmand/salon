@@ -18,7 +18,7 @@ export default async function Page({params} : {  params: Promise<{ locale: strin
     setRequestLocale(locale);
     return(
       <section>
-         <Header />
+         <Header locale={locale}/>
          <Benefit/>
          <PopularSalon/>
          <Service/>

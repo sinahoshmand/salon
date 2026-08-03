@@ -33,7 +33,7 @@ const stats = [
 
 export default function Testimonial() {
   return (
-    <section className={`mt-18 container-c  `}>
+    <section className={`mt-13 container-c  `}>
       <div className={`grid gap-9 grid-cols-12`}>
         <div className={"col-span-4"}>
           <SectionTitle title={"What Our Clients Say"} />

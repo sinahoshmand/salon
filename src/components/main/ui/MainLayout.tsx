@@ -1,7 +1,7 @@
 "use client";
 import Footer from "@/src/components/main/ui/Footer";
  
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Menu from "./Menu";
 
 type Props = {
@@ -11,9 +11,9 @@ type Props = {
 export default function MainLayout({ children }: Props) {
   return (
     <main className="bg-[var(--bg)]  min-h-screen overflow-hidden">
-      
-         <Menu/>
-       
+       <Suspense>
+          <Menu/>
+       </Suspense>
       {children}
       <div className="h-1 w-full bg-[var(--border)]"></div>
       <Footer />

@@ -47,14 +47,14 @@ export default function Filter() {
     <div
       ref={section}
       className="
-        mt-28
+        mt-30
         z-20
- 
+    opacity-85
 relative
 overflow-hidden
 rounded-[32px]
 border border-white/30
-bg-[var(--bg)]/70
+bg-[var(--bg)]/65
 backdrop-blur-[30px]
 shadow-[0_15px_80px_rgba(255,255,255,.15),0_25px_80px_rgba(0,0,0,.12)]
 px-6

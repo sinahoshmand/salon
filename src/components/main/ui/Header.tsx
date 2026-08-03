@@ -5,18 +5,24 @@ import { FaStar } from "react-icons/fa";
 import Menu from "./Menu";
 import Filter from "../Header/Filter";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { hover } from "motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-export default function Header() {
+
+
+type Props ={
+  locale : string
+}
+
+export default function Header({locale} : Props) {
 
   const section = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     gsap.fromTo(
       section.current,
       {
-        scale : 3,
+        scale : 2,
         opacity: 0,
       },
       
@@ -36,7 +42,7 @@ export default function Header() {
 
 
    return (
-    <section className="header-bg w-full relative  pb-20">
+    <section className={`${locale === "en" ? 'header-bg' : 'header-fa-bg'} w-full relative  pb-20`}>
         
       <div className="container-c h-full">
         <div className="grid grid-cols-12 gap-5 ">
@@ -44,17 +50,11 @@ export default function Header() {
             <div
             ref={section}
               className="
-              mt-28
+              mt-20
               z-20
-         opacity-85
-        
+         opacity-85  
     relative
     overflow-hidden
-    rounded-[32px]
-    border border-white/30
-    bg-[var(--bg)]/70
-    backdrop-blur-[30px]
-    shadow-[0_15px_80px_rgba(255,255,255,.15),0_25px_80px_rgba(0,0,0,.12)]
     px-8
     py-10
   "
@@ -76,7 +76,7 @@ export default function Header() {
                   Appointment
                   <span className="text-[var(--primary)]"> in Secounds</span>
                 </h2>
-                <p className="  max-w-max mt-3 text-[var(--text)] text-[16px] leading-9">
+                <p className="  max-w-max mt-3 text-[var(--text)] text-[17px] leading-9">
                   Your beauty, your moment. Schedule your appointment and enjoy
                   a personalized salon experience crafted just for you.
                 </p>
@@ -164,7 +164,9 @@ export default function Header() {
 
           </div>
           <div className="col-span-4">
-              <Filter/>
+              <Suspense>
+                 <Filter/>
+              </Suspense> 
           </div>
         </div>
       </div>

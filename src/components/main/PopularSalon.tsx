@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 
 export default function PopularSalon() {
   return (
-    <section className="mt-18 container-c">
+    <section className="mt-13 container-c">
       <SectionTitle
         title={"Popular Salons"}
         link_name={"View All Salons"}
