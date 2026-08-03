@@ -88,11 +88,11 @@ export default function Testimonial() {
                   <span className="text-[var(--primary)]">{item.icon}</span>
                 </div>
 
-                <p className="text-[35px] mt-3 text-[var(--text)] font-bold leading-none">
+                <p className="text-[30px] mt-3 text-[var(--text)] font-bold leading-none">
                   {item.value}
                 </p>
 
-                <p className="text-[15px] mt-2 text-[var(--secondary-text)] font-semibold">
+                <p className="text-[15px] mt-2 text-[var(--secondary-text)] ">
                   {item.title}
                 </p>
               </div>

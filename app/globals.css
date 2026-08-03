@@ -58,3 +58,22 @@
     }
 }
 
+
+.custom-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: #C97B8B;
+    border-radius: 8px;
+    
+  }
+  
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: #B96A7B;
+  }
+

@@ -3,17 +3,51 @@ import Image from "next/image";
 import { BsArrowRight } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
 import Menu from "./Menu";
- 
+import Filter from "../Header/Filter";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
+import { hover } from "motion";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 export default function Header() {
+
+  const section = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    gsap.fromTo(
+      section.current,
+      {
+        scale : 3,
+        opacity: 0,
+      },
+      
+      {
+        scale : 1,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section.current,
+          start: "top 30%",
+          toggleActions: "play reverse play reverse",
+        },
+      }
+    );
+  }, []);
+
+
    return (
-    <section className="header-bg w-full  pb-20">
+    <section className="header-bg w-full relative  pb-20">
+        
       <div className="container-c h-full">
-       <Menu/>
-        <div className="grid grid-cols-12 gap-5 mt-8">
-          <div className="col-span-12 sm:col-span-5">
+        <div className="grid grid-cols-12 gap-5 ">
+          <div className="col-span-5">
             <div
+            ref={section}
               className="
+              mt-28
+              z-20
          opacity-85
+        
     relative
     overflow-hidden
     rounded-[32px]
@@ -31,18 +65,18 @@ export default function Header() {
                 items-center rounded-[30px] px-3 py-2"
                 >
                   <FaStar color="var(--primary)" size={13} />
-                  <p className="text-[var(--primary)] font-bold text-[13px]">
+                  <p className="text-[var(--primary)]  text-[13px]">
                     Your Beauty , Our Priority
                   </p>
                 </div>
-                <h1 className="text-[var(--text)] mt-3 text-[45px] font-bold">
+                <h1 className="text-[var(--text)] mt-3 text-[40px] font-bold">
                   Book Your Beauty
                 </h1>
-                <h2 className="text-[var(--text)] text-[45px] font-bold">
+                <h2 className="text-[var(--text)] text-[40px] font-bold">
                   Appointment
                   <span className="text-[var(--primary)]"> in Secounds</span>
                 </h2>
-                <p className="  max-w-max mt-3 text-[var(--text)] text-[18px] leading-9">
+                <p className="  max-w-max mt-3 text-[var(--text)] text-[16px] leading-9">
                   Your beauty, your moment. Schedule your appointment and enjoy
                   a personalized salon experience crafted just for you.
                 </p>
@@ -51,6 +85,8 @@ export default function Header() {
                 <button
                   className=" px-5 text-[15px] py-3.5
               rounded-[12px]
+               scale-100
+               hover:scale-110
               items-center
               bg-[var(--primary)]
               text-white
@@ -66,6 +102,8 @@ export default function Header() {
               rounded-[12px]
               items-center
               border-2
+               scale-100
+               hover:scale-110
               border-[var(--primary)]
               text-[var(--primary)]
               font-bold
@@ -122,7 +160,12 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="hidden sm:col-span-7"></div>
+          <div className="col-span-3">
+
+          </div>
+          <div className="col-span-4">
+              <Filter/>
+          </div>
         </div>
       </div>
     </section>

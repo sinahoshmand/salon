@@ -21,12 +21,12 @@ export default function BlogCard({ image }: { image: string }) {
 
       {/* Content */}
       <div className="absolute inset-0 p-5 flex flex-col justify-end">
-        <span className="w-fit px-4 py-1 rounded-full bg-white/90 text-[var(--primary)] text-[11px] font-bold">
+        <span className="w-fit px-4 py-1 rounded-full bg-white/90 text-[var(--primary)] text-[11px]  ">
           Hair Care
         </span>
         <Link href={"#"}>
           <h2 className="mt-2 hover:text-[var(--primary)] 
-           transition-all duration-300 text-white text-[22px] leading-tight font-bold line-clamp-2">
+           transition-all duration-300 text-white text-[20px] leading-tight font-bold line-clamp-2">
             5 Ways To Keep your Hair Healthy & Shiny
           </h2>
         </Link>

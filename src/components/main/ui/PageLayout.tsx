@@ -2,18 +2,14 @@
 import Footer from "@/src/components/main/ui/Footer";
  
 import { ReactNode } from "react";
-import Menu from "./Menu";
 
 type Props = {
   children: ReactNode;
 };
 
-export default function MainLayout({ children }: Props) {
+export default function PageLayout({ children }: Props) {
   return (
-    <main className="bg-[var(--bg)]  min-h-screen overflow-hidden">
-      
-         <Menu/>
-       
+    <main className="bg-[var(--bg)]  min-h-screen ">
       {children}
       <div className="h-1 w-full bg-[var(--border)]"></div>
       <Footer />

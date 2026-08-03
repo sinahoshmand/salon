@@ -18,8 +18,8 @@ export default function SectionTitle({title , link_name , href="#" , center=fals
                   text-[var(--secondary-text)] text-[25px]">{title}</h2>
                 <BsStars color="var(--champagne-gold)" size={27}/>
             </div>
-            {link_name && <Link href={href} className="flex font-bold gap-2 
-            items-center text-[var(--primary)] text-[16px]">
+            {link_name && <Link href={href} className="flex   gap-2 
+            items-center text-[var(--primary)] text-[14px]">
                {link_name}
                <BsArrowRight   color="text-[var(--primary)]" size={15}/>
             </Link>}

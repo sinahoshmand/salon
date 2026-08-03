@@ -1,11 +1,33 @@
 "use client";
-import { Link, usePathname } from "@/src/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/src/i18n/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import mainMenus from "@/src/data/mainMenu";
-import { FaSearch } from "react-icons/fa";
+import { FaArrowCircleDown, FaGlobe, FaSearch } from "react-icons/fa";
+import { useLocale } from "next-intl";
+import { CgArrowDown } from "react-icons/cg";
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
+import { useSearchParams } from "next/navigation";
 export default function Menu() {
+  const[open ,  setOpen] = useState<Boolean>(false)
+  const locale = useLocale();
   const [scrollY, setScrollY] = useState(0);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const changeLang = (newLocale: string) => {
+    const query = Object.fromEntries(searchParams.entries());
+  
+    router.replace(
+      {
+        pathname,
+        query,
+      },
+      {
+        locale: newLocale,
+      }
+    );
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +48,7 @@ export default function Menu() {
         ${
           scrollY > 100
             ? "fixed inset-x-0 top-0 w-full bg-white/80 backdrop-blur-xl shadow-lg px-6"
-            : "relative bg-transparent"
+            : " absolute container-c bg-transparent top-0 right-0  left-0"
         }
           justify-between py-5
            transition-all duration-300 ease-in-out`}
@@ -57,7 +79,7 @@ export default function Menu() {
                 <Link
                   href={menu.href}
                   className={`
-                    text-[16px] font-medium transition-all duration-300
+                    text-[15px] font-medium transition-all duration-300
                     ${
                       active
                         ? "text-[var(--primary)]"
@@ -85,16 +107,63 @@ export default function Menu() {
       </nav>
 
       {/* Actions */}
-      <div className="flex items-center gap-4">
-        <button
-          className="
-            w-10 h-10 rounded-full
-            flex items-center justify-center
-            hover:bg-black/5 transition
+      <div className="flex items-center gap-2">
+      
+
+        <div className="relative">
+          <button
+            onClick={() => {
+               setOpen((prev) => !prev)
+            }}
+            className="
+            px-4 py-2.5
+            rounded-lg
+            bg-[var(--champagne-gold)]
+            text-white
+            text-[14px]
+            font-medium
+            transition gap-2
+            flex items-center
+            hover:opacity-90
           "
-        >
-          <FaSearch size={16} />
-        </button>
+          >
+            <FaGlobe color="var(--bg)" size={15} />
+            {locale === "en" ? "English" : "فارسی"}
+            {open ? (<BiChevronDown color="var(--bg)" size={18} />) : (<BiChevronUp color="var(--bg)" size={18} />)}
+          </button>
+          {open &&
+          <div className="absolute top-12 left-0 z-20 w-44 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-2 shadow-lg">
+            <ul className="space-y-1">
+              <li>
+                <button
+                  onClick={() => changeLang('en')}
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200  hover:bg-[var(--primary)]/10 ${
+                    locale === "en"
+                      ? "bg-[var(--primary)] text-white"
+                      : "text-[var(--text)]"
+                  }`}
+                >
+                  <span>English</span>
+                  <span className="text-xs opacity-70">🇺🇸</span>
+                </button>
+              </li>
+
+              <li>
+                <button
+                 onClick={() => changeLang('fa')}
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 hover:bg-[var(--primary)]/10 ${
+                    locale === "fa"
+                      ? "bg-[var(--primary)] text-white"
+                      : "text-[var(--text)]"
+                  }`}
+                >
+                  <span>فارسی</span>
+                  <span className="text-xs opacity-70">🇮🇷</span>
+                </button>
+              </li>
+            </ul>
+          </div> }
+        </div>
 
         <button
           className="

@@ -1,3 +1,4 @@
+import Header from "@/src/components/main/ui/Header";
 import Article from "@/src/components/main/Article";
 import Benefit from "@/src/components/main/Benefit";
 import Explain from "@/src/components/main/Explain";
@@ -17,6 +18,7 @@ export default async function Page({params} : {  params: Promise<{ locale: strin
     setRequestLocale(locale);
     return(
       <section>
+         <Header />
          <Benefit/>
          <PopularSalon/>
          <Service/>
