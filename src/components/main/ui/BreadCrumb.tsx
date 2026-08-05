@@ -19,7 +19,7 @@ export default function BreadCrumb({
   hrefSecond="#",
 }: Props) {
   return (
-    <div className="flex flex-row gap-2 items-center">
+    <div className="flex   flex-row gap-2 items-center">
       <Link
         href={href}
         className="text-[var(--primary)]/80 font-bold text-[15px]"

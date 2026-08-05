@@ -15,7 +15,7 @@ export default function MainLayout({ children }: Props) {
           <Menu/>
        </Suspense>
       {children}
-      <div className="h-1 w-full bg-[var(--border)]"></div>
+      <div className="h-[1px] w-full bg-[var(--border)]"></div>
       <Footer />
     </main>
   );

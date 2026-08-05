@@ -1,5 +1,5 @@
 .header-bg{
-    background-image: url('/images/banner10.png');
+    background-image: url('/images/banner15.png');
     background-position: center center;
     background-size: cover;
     background-origin:  border-box;
@@ -9,12 +9,21 @@
 }
 
 
+.small-sec-pic{
+  background-image: url('/images/bg-flower.png');
+  background-position: center  ;
+  background-size: cover;
+  background-origin:  border-box;
+  background-repeat: no-repeat;
+}
+
+
 
 .salon-bg{
   background-image: url('/images/salon-banner.png');
-  background-position: center center;
+  background-position: center  ;
   background-size: cover;
-  background-origin:  border-box;
+  background-origin: content-box;
   background-repeat: no-repeat;
 
 

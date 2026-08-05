@@ -7,35 +7,35 @@ export default function ForCustomers(){
         <ul className="flex flex-col gap-2   mt-5">
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
              " href={'/'}>
                 HowItWorks
             </Link>
          </li>
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
             " href={'/'}>
                 FindSalons
             </Link>
          </li>
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
             " href={'/'}>
                 LoyaltyProgram
             </Link>
          </li>
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
              " href={'/'}>
                 Previews
             </Link>
          </li>
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
              " href={'/'}>
                FAQs
             </Link>

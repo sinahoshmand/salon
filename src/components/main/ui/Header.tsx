@@ -43,6 +43,7 @@ export default function Header({locale} : Props) {
 
    return (
     <section className={`${locale === "en" ? 'header-bg' : 'header-fa-bg'} w-full relative  pb-20`}>
+      <div className="absolute w-full h-full z-10 bg-[var(--surface)]/15"></div>
         
       <div className="container-c h-full">
         <div className="grid grid-cols-12 gap-5 ">

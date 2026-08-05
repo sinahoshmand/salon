@@ -7,21 +7,21 @@ export default function ForPartners(){
         <ul className="flex flex-col gap-2   mt-5">
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
              " href={'/'}>
                 Become a Partner
             </Link>
          </li>
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
             " href={'/'}>
                 Partner Login
             </Link>
          </li>
          <li>
             <Link className="text-[var(--secondary-text)] 
-            hover:text-[var(--primary)] text-[16px] 
+            hover:text-[var(--primary)] text-[14px] 
              " href={'/'}>
                Terms&Conditions
             </Link>

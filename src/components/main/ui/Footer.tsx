@@ -45,13 +45,13 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full h-1 bg-[var(--border)] mt-7"></div>
-      <div className="grid grid-cols-3 py-5">
-        <p className="text-[14px]   text-[var(--text)]">
+      <div className="w-full h-[1px] bg-[var(--border)] mt-7"></div>
+      <div className="grid grid-cols-3 py-3">
+        <p className="text-[12px]   text-[var(--text)]">
           © 2026 BeastBeauty. Crafted with care. All rights reserved.
         </p>
         <div></div>
-        <p className="text-[14px]  text-right  text-[var(--text)]">
+        <p className="text-[12px]  text-right  text-[var(--text)]">
           {" "}
           Designed & Developed with ❤️ by{" "}
           <a
