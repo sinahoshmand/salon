@@ -4,6 +4,7 @@ import { Link } from "@/src/i18n/navigation";
 import Image from "next/image";
 import { BiBuildings } from "react-icons/bi";
 import { BsStarFill } from "react-icons/bs";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
  
 
@@ -55,7 +56,7 @@ export default function SalonCard() {
           Luxe Beuty Studio
         </h2>
         <span className="  text-[13px] mt-1 items-center text-[var(--secondary-text)] flex gap-1">
-          <BiBuildings size={13} />
+          <FaMapMarkerAlt color="var(--secondary-text)" size={12} />
           New York,NY
         </span>
         <div className="flex flex-row gap-2 flex-wrap mt-3">
@@ -73,7 +74,7 @@ export default function SalonCard() {
           className="w-full bg-[var(--primary)] 
                  rounded-[10px] transition-all duration-150 mt-4 hover:bg-[var(--primary-hover)] 
                  py-1.5 text-center text-[14px]   text-[#ffff]"
-          href={""}
+          href={"/salon/salon-number-one"}
         >
           Book Appointment
         </Link>

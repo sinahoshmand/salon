@@ -9,10 +9,10 @@ interface Menus {
 const mainMenus : Menus[] = [
     {id : 1,name : 'Home' , href : '/' },
     {id : 2,name : 'Salons' , href : '/salons'},
-    {id : 3,name : 'Services' , href : '/Services'},
+    {id : 3,name : 'Services' , href : '/services'},
     {id : 4,name : 'Pricing' , href : '/Pricing'},
-    {id : 5,name : 'About' , href : '/About'},
-    {id : 6,name : 'Contact' , href : '/Contact'},
+    {id : 5,name : 'How It Works' , href : '/how-it-works'},
+    {id : 6,name : 'Contact' , href : '/contact'},
 ];
 
 

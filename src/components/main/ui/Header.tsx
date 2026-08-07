@@ -165,9 +165,7 @@ export default function Header({locale} : Props) {
 
           </div>
           <div className="col-span-4">
-              <Suspense>
-                 <Filter/>
-              </Suspense> 
+              <Filter/>
           </div>
         </div>
       </div>

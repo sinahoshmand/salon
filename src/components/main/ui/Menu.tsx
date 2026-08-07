@@ -167,7 +167,8 @@ export default function Menu() {
           </div> }
         </div>
 
-        <button
+        <Link
+           href={'/login'}
           className="
             px-6 py-2.5
             rounded-lg
@@ -180,9 +181,10 @@ export default function Menu() {
           "
         >
           Login
-        </button>
+        </Link>
 
-        <button
+        <Link href={'/register'}
+        
           className="
             px-6 py-2.5
             rounded-lg
@@ -194,7 +196,7 @@ export default function Menu() {
           "
         >
           Register
-        </button>
+        </Link>
       </div>
     </header>
   );

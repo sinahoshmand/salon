@@ -1,5 +1,5 @@
 .header-bg{
-    background-image: url('/images/banner15.png');
+    background-image: url('/images/main.png');
     background-position: center center;
     background-size: cover;
     background-origin:  border-box;
@@ -36,8 +36,38 @@
   background-size: cover;
   background-origin:  border-box;
   background-repeat: no-repeat;
+ 
 
 
+}
+
+
+.about-banner{
+  background-image: url('/images/about-banner.png');
+  background-position: bottom;
+  background-size: contain;
+  background-origin:  border-box;
+  background-repeat: no-repeat;
+  
+}
+
+.about-banner2{
+  background-image: url('/images/about-banner.png');
+  background-position: right;
+  background-size: cover;
+  background-origin:  border-box;
+  background-repeat: no-repeat;
+  
+}
+
+
+.single-salon-about{
+  background-image: url('/images/about.png');
+  background-position: bottom;
+  background-size: cover;
+  background-origin:  border-box;
+  background-repeat: no-repeat;
+  
 }
 
 

@@ -2,7 +2,6 @@
 import SectionTitle from "./ui/SectionTitle";
 import ServiceCard from "./ServiceCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 
 export default function Service() {

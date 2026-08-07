@@ -2,17 +2,46 @@
 
 import { Link } from "@/src/i18n/navigation";
 import Image from "next/image";
-import { FaListAlt, FaStar } from "react-icons/fa";
+import { FaHeart, FaListAlt, FaStar } from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
-
+import { Rating, RoundedStar } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
+import { BiHeart } from "react-icons/bi";
+import { useState } from "react";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { MdVerified } from "react-icons/md";
 export default function Item() {
+  const [hoverd, setHoverd] = useState<boolean>(false);
   return (
     <div className="flex flex-col mt-6">
-      <div className="bg-[var(--surface)] hover:shadow-[0_0_10px_var(--primary)] shadow-sm transition-all scale-100 
+      <div
+        className="bg-[var(--surface)] hover:shadow-[0_0_10px_var(--primary)] shadow-sm transition-all scale-100 
       hover:scale-102 duration-300 hover:border-[var(--primary)] 
-      border border-[var(--border)] rounded-[10px] p-2">
+      border border-[var(--border)] rounded-[10px] p-2"
+      >
         <div className="grid grid-cols-12 gap-3">
-          <div className="col-span-4">
+          <div className="col-span-4 relative">
+            <button className="group absolute top-3 right-8 bg-[var(--surface)] rounded-[6px] p-2">
+              <BsHeart
+                className="block group-hover:hidden"
+                color="var(--primary)"
+                size={15}
+              />
+
+              <BsHeartFill
+                className="hidden group-hover:block"
+                color="var(--primary)"
+                size={15}
+              />
+            </button>
+            <div
+              className={
+                "absolute top-3 bg-[var(--bg)] items-center py-1 px-3 rounded-full left-2 flex flex-row gap-2"
+              }
+            >
+              <MdVerified size={12} color={"var(--champagne-gold)"} />
+              <p className=" text-[12px] ">Verified</p>
+            </div>
             <Image
               src={"/images/salon.jpg"}
               className="rounded-[10px] object-cover w-[290px] h-[210px]"
@@ -23,7 +52,7 @@ export default function Item() {
           </div>
           <div className="col-span-5">
             <div className="flex flex-col mt-3">
-              <Link href={"#"}>
+              <Link href={"/salon/number-one"}>
                 <h2
                   className="text-[var(--text)] 
                           transition-all duration-300 hover:text-[var(--primary)] 
@@ -32,18 +61,23 @@ export default function Item() {
                   Luxe Beuty Studio
                 </h2>
               </Link>
-              <div className="flex flex-row gap-2 mt-3 items-center">
+              <div className="flex flex-row gap-1.5 mt-3 items-center">
                 <span className="text-[13px] text-[var(--secondary-text)] font-semibold">
                   5.0
                 </span>
-                <div className="flex flex-row gap-1 items-center">
-                  <FaStar color="gold" size={17} />
-                  <FaStar color="gold" size={17} />
-                  <FaStar color="gold" size={17} />
-                  <FaStar color="gold" size={17} />
-                  <FaStar color="gold" size={17} />
-                </div>
-                <span className="text-[13px] text-[var(--secondary-text)] font-semibold">
+                <Rating
+                  style={{ maxWidth: 80 }}
+                  value={5}
+                  readOnly
+                  itemStyles={{
+                    itemShapes: RoundedStar,
+                    activeFillColor: "#FACC15",
+                    activeStrokeColor: "#EAB308",
+                    inactiveFillColor: "#E5E7EB",
+                    inactiveStrokeColor: "#D1D5DB",
+                  }}
+                />
+                <span className="text-[13px] text-[var(--secondary-text)]/80 font-semibold">
                   (324 Reviews)
                 </span>
               </div>
@@ -84,14 +118,18 @@ export default function Item() {
             </div>
           </div>
           <div className="col-span-3 flex flex-col items-end mt-5 mr-5">
-               <p className="text-[14px] mb-1 text-[var(--secondary-text)]   mt-3">
-                  Starting From
-               </p>
-               <strong className="text-[25px] text-right inline-block text-[var(--primary)]">$25</strong>
-               <button className="w-full bg-[var(--primary)] hover:bg-[var(--rose-gold)] 
-               text-[15px] text-[var(--bg)] transition-all duration-300 px-2 py-3 rounded-[10px] mt-5">
-                  Book Appointment
-               </button>
+            <p className="text-[14px] mb-1 text-[var(--secondary-text)]   mt-3">
+              Starting From
+            </p>
+            <strong className="text-[25px] text-right inline-block text-[var(--primary)]">
+              $25
+            </strong>
+            <Link href={"/salon/number-one"}
+              className="w-full text-center bg-[var(--primary)] hover:bg-[var(--rose-gold)] 
+               text-[15px] text-[var(--bg)] transition-all duration-300 px-2 py-3 rounded-[10px] mt-5"
+            >
+              Book Appointment
+            </Link>
           </div>
         </div>
       </div>
