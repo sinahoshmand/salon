@@ -1,0 +1,8 @@
+
+.bg-register{
+    background-image: url('/images/login.png');
+    background-position: center center;
+    background-origin: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }

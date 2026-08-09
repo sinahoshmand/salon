@@ -1,3 +1,4 @@
+"use client"
 import { FaClock, FaShield } from "react-icons/fa6";
 import Card from "./Card";
 import { BiMoney } from "react-icons/bi";

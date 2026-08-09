@@ -3,7 +3,7 @@ import "./admin.css";
 import SideBar from "@/src/components/admin/ui/SideBar";
 import Header from "@/src/components/admin/ui/Header";
 import Footer from "@/src/components/admin/ui/Footer";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
  
@@ -38,7 +38,10 @@ type LayoutProps = {
 export default async function Layout({ children }: LayoutProps) {
   const session = await getServerSession(authOptions);
 
-//   if (!session) redirect("/login");
+   console.log(session)
+
+   if (!session) redirect("/login");
+   if(session.role !== "super_admin") notFound()
 
   return (
     <main className=" relative  bg-[#F3F3F9]">

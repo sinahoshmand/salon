@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import BreadCrumb from "../ui/BreadCrumb";
 
 export default function Header() {

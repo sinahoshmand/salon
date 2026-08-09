@@ -16,7 +16,7 @@ export default function Menu() {
   const [scrollY, setScrollY] = useState(0);
   const router = useRouter();
   const searchParams = useSearchParams();
-
+  const pathname = usePathname();
   const changeLang = (newLocale: string) => {
     const query = Object.fromEntries(searchParams.entries());
   
@@ -42,7 +42,7 @@ export default function Menu() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const pathname = usePathname();
+  
 
   return (
     <header
