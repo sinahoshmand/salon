@@ -78,6 +78,35 @@
   background-repeat: no-repeat;
 }
 
+
+.howitworks-bg{
+  background-image: url('/images/how-it-work-banner.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.howitworks2-bg{
+  background-image: url('/images/how-it-work-banner2.png');
+  background-position:  top;
+  background-size: cover;
+  background-origin:  border-box;
+  background-repeat: no-repeat;
+}
+
+
+
+
+.service-banner{
+  background-image: url('/images/service-banner.png');
+  background-position: center;
+  background-size: cover;
+  background-origin:  border-box;
+  background-repeat: no-repeat;
+  
+}
+
  
 .swiper-button-prev,
 .swiper-button-next {

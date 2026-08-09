@@ -17,10 +17,10 @@ export default function Page() {
       <div className="container-c">
         <Bnefit />
         <div className="grid grid-cols-12 gap-8 mt-15 mb-15">
-          <div className="col-span-3">
+        <div className="col-span-3 hidden sm:block">
             <Filter />
           </div>
-          <div className="col-span-9">
+          <div className="col-span-12 sm:col-span-9">
             <SalonList />
           </div>
         </div>

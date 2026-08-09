@@ -7,7 +7,7 @@ import "swiper/css";
 export default function Service() {
   return (
     <section className="mt-13 container-c">
-      <SectionTitle title={`Services`} link_name={`View All Services`} />
+      <SectionTitle title={`Services`} link_name={`View All Services`} href="/services" />
 
       <Swiper
       

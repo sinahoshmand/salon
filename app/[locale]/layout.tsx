@@ -34,7 +34,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html dir={locale === "en" ? 'ltr' : 'rtl'} lang={locale === "en" ? 'en' : 'fa'}>
-      <body className={`${locale === "en" ? inter.className : myFont.className}
+      <body      cz-shortcut-listen="true" className={`${locale === "en" ? inter.className : myFont.className}
        h-full antialiased custom-scroll`}>
         <NextTopLoader color="#C97B8B" height={4} showSpinner={false} />
         <NextIntlClientProvider locale={locale}>

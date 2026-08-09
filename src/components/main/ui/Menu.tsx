@@ -8,7 +8,9 @@ import { useLocale } from "next-intl";
 import { CgArrowDown } from "react-icons/cg";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 export default function Menu() {
+  const {  status} = useSession();
   const[open ,  setOpen] = useState<Boolean>(false)
   const locale = useLocale();
   const [scrollY, setScrollY] = useState(0);
@@ -167,7 +169,28 @@ export default function Menu() {
           </div> }
         </div>
 
-        <Link
+      {status === "authenticated" ? (
+        
+
+        <Link href={'/register'}
+        
+          className="
+            px-6 py-2.5
+            rounded-lg
+            bg-[var(--primary)]
+            text-white
+            font-medium
+            transition
+            hover:opacity-90
+          "
+        >
+          Register
+        </Link>
+
+      ) : (
+
+      <>
+      <Link
            href={'/login'}
           className="
             px-6 py-2.5
@@ -197,6 +220,11 @@ export default function Menu() {
         >
           Register
         </Link>
+      
+      </>
+
+      )}
+        
       </div>
     </header>
   );
