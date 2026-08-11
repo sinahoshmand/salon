@@ -1,7 +1,7 @@
 import { IconType } from "react-icons";
 import { BiBriefcaseAlt } from "react-icons/bi";
 import {  FaBriefcase, FaHome } from "react-icons/fa";
-import { FaNewspaper } from "react-icons/fa6";
+import { FaNewspaper, FaStore } from "react-icons/fa6";
 import { GiCog } from "react-icons/gi";
 import { PiPhoneCall } from "react-icons/pi";
 
@@ -24,7 +24,7 @@ interface Menu {
 const menus : Menu[] = [
  {
     id:1,
-    name : "خانه" ,
+    name : "home" ,
     icon :  FaHome,
     child : [],
     has_sub : false,
@@ -32,9 +32,9 @@ const menus : Menu[] = [
  },
 
  {
-   id:3,
-   name : "سالن ها" ,
-   icon :  FaBriefcase,
+   id:2,
+   name : "salons" ,
+   icon :  FaStore,
    child : [],
    has_sub : false,
    href : '/admin/salon'
@@ -45,15 +45,12 @@ const menus : Menu[] = [
 
  {
     id:6,
-    name : "تنظیمات" ,
+    name : "settings" ,
     icon :  GiCog,
     child : [
-      {id : 1 , name : 'تنظیمات متن ها' , href : '/admin/setting/main-texts-setting'},
-      {id : 2 , name : 'صفحه درباره من' , href : '/admin/setting/about-us'},
-      {id : 3 , name : 'صفحه تماس با من' , href : '/admin/setting/contact'},
-      {id : 4 , name : 'سایر تنظیمات' , href : '/admin/setting/other'},
+     
     ],
-    has_sub : true,
+    has_sub : false,
     href : '#'
  },
 

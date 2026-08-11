@@ -1,6 +1,8 @@
 import Form from "@/src/components/auth/login/Form";
 import TopNav from "@/src/components/auth/login/TopNav";
+import { Link } from "@/src/i18n/navigation";
 import { Metadata } from "next";
+import Image from "next/image";
 import { Suspense } from "react";
 import { FaUserPlus } from "react-icons/fa6";
 
@@ -11,12 +13,14 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <section className="flex flex-col w-full">
-      <TopNav />
-      <div className="grid grid-cols-12 gap-6 w-full">
-        <div className="col-span-2"></div>
-        <div className="col-span-7">
-          <div className="bg-[var(--surface)] flex mt-10 mb-10 flex-col items-center rounded-[20px]  w-full  shadow-md p-8 mt-10">
+    <section className=" bg-[#F7F5F6] ">
+      <div className="flex flex-flex w-full ">
+        <div className="min-h-screen w-[850px] bg-login">
+        
+        </div>
+
+        <div className="w-full flex flex-row justify-start mt-20 items-center">
+          <div className="bg-[var(--surface)] w-[550px]    flex mt-10 mb-10 flex-col items-center rounded-[20px]   shadow-md p-8 mt-10">
             <div className="p-6 bg-[var(--primary)]/20 max-w-max rounded-full">
               <FaUserPlus color="var(--primary)" size={40} />
             </div>
@@ -27,11 +31,9 @@ export default function Page() {
             <p className="text-[var(--secondary-text)] mt-2 text-[14px]">
               Login to your account and continue your beauty journey
             </p>
-
             <Form />
           </div>
         </div>
-        <div className="col-span-3"></div>
       </div>
     </section>
   );

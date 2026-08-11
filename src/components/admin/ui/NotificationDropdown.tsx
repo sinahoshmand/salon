@@ -1,10 +1,12 @@
 "use client"
+import { useLocale } from "next-intl";
 import { useState } from "react";
 import { BiBell } from "react-icons/bi";
 
 export default function NotificationDropdown() {
 
     const [open , setOpen] = useState<boolean>(false);
+    const locale = useLocale();
 
   return (
     <div
@@ -16,7 +18,7 @@ export default function NotificationDropdown() {
       </button>
       <div 
      
-      className={`absolute left-6 top-12 w-[380px] overflow-hidden rounded-2xl`+
+      className={`absolute ${locale === "en" ? 'right-6' : 'left-6'} top-12 w-[380px] overflow-hidden rounded-2xl`+
         `borderborder-slate-200 ${open ? 'visible' : 'hidden'} bg-white shadow-[0_10px_40px_rgba(0,0,0,0.12)] z-50`}>
       
         <div className="flex items-center justify-between border-b border-slate-100 p-4">

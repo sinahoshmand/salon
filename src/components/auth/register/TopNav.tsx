@@ -4,7 +4,6 @@ import { useLocale } from "next-intl";
 import { useState } from "react";
 import { FaGlobe } from "react-icons/fa";
 import { Link, usePathname, useRouter } from "@/src/i18n/navigation";
-import Image from "next/image";
 
 export default function TopNav(){
     const[open ,  setOpen] = useState<Boolean>(false)
@@ -25,26 +24,12 @@ export default function TopNav(){
       };
     return(
          
-     <div className="flex w-full absolute justify-between items-center  px-8  gap-2">
-       <div className="flex justify-start w-full">
-           {/* Logo */}
-      <Link
-        href="/"
-        className="  inline-block"
-      >
-        <Image
-          unoptimized
-          src="/images/logo3.png"
-          width={190}
-          height={50}
-          alt="logo"
-          className="w-full h-[130px] object-contain  "
-        />
-      </Link>
-        </div>
+         <div className="flex items-center justify-end gap-2 mt-10 mr-10">
 
-        <div className="flex flex-row gap-4">
-        <div className="relative">
+          
+      
+
+         <div className="relative">
            <button
              onClick={() => {
                 setOpen((prev) => !prev)
@@ -105,7 +90,7 @@ export default function TopNav(){
      
          
  
-         <Link href={'/register'}
+         <Link href={'/login'}
          
            className="
              px-6 py-2.5
@@ -118,10 +103,9 @@ export default function TopNav(){
              hover:opacity-90
            "
          >
-           Register
+           Login
          </Link>
  
-        </div>
       
          
        </div>

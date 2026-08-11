@@ -25,6 +25,9 @@ export function useApi() {
         if (error.response?.status === 401) {
            await signOut({ callbackUrl : '/login' })
         }
+        if (error.response?.status === 403) {
+          // نمایش Access Denied
+        }
         return Promise.reject(error);
       }
     );

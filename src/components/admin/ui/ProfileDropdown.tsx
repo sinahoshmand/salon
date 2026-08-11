@@ -1,7 +1,9 @@
 "use client"
+import { useRouter } from "@/src/i18n/navigation";
 import { useApi } from "@/src/service/api";
 import { useMutation } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -13,16 +15,20 @@ type Props = {
 }
 
 export default function ProfileDropdown({name , image , role="مدیرسیستم"}:Props){
-
+    const locale = useLocale();
+    const router = useRouter();
     const[open , setOpen] = useState<boolean>(false)
     const api = useApi();
     const logoutSystem = useMutation({
        mutationFn : () => 
-        api.post(`${process.env.NEXT_PUBLIC_BACKEND_ADDRESS}/panel/logout` , null)
+        api.post(`${process.env.NEXT_PUBLIC_BACKEND_ADDRESS}/auth/logout` , null)
         ,onSuccess : async (success) => {
            await signOut({
-              callbackUrl : '/login'
-           })   
+              // callbackUrl : '/login'
+              redirect : false
+           })  
+           
+           router.push('/login')
         },
         onError : (error) => {
           console.log(error)
@@ -42,23 +48,23 @@ export default function ProfileDropdown({name , image , role="مدیرسیستم
              
             >
               <Image
-                className="rounded-full"
-                src={image ?? '/images/profile.png'}
-                width={30}
-                height={30}
+                className="rounded-full  w-[30px] h-[30px]"
+                src={'/images/profile.jpg'}
+                width={80}
+                height={80}
                 alt={name}
               />
               <p className="text-[12px]">{name}</p>
             </button>
-            <div className={`absolute left-3 ${open ? 'visible' : 'hidden'} top-15 w-72 rounded-xl border
+            <div className={`absolute ${locale === "en" ? 'right-3' : 'left-3'} ${open ? 'visible' : 'hidden'} top-15 w-72 rounded-xl border
                  border-slate-200 bg-white shadow-2xl overflow-hidden z-50`}>
               <div className="p-4 border-b border-slate-100">
                 <div className="flex items-center gap-3">
                 <Image
-                className="rounded-full"
-                src={image ?? '/images/profile.png'}
-                width={45}
-                height={45}
+                className="rounded-full w-[30px] h-[30px]"
+                src={'/images/profile.jpg'} 
+                width={80}
+                height={80}
                 alt={name}
               />
 

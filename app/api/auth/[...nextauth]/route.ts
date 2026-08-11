@@ -1,6 +1,7 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import { cookies } from "next/headers";
 
 export const authOptions : AuthOptions = {
   debug:true,
@@ -76,9 +77,11 @@ export const authOptions : AuthOptions = {
       },
     }),
     GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID!,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      })
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      idToken: true,
+      checks: ["state"],
+    })
   ],
 
   session: {
@@ -90,6 +93,9 @@ export const authOptions : AuthOptions = {
     async signIn({ user, account }) {
       
       if(account?.provider === "google") {
+        const cookieStore = await cookies();
+        const role = cookieStore.get("google_role")?.value;
+
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_ADDRESS}/auth/google-login`,
           {
@@ -102,7 +108,8 @@ export const authOptions : AuthOptions = {
               email:user.email,
               name:user.name,
               avatar:user.image,
-              provider_id:account.providerAccountId
+              provider_id:account.providerAccountId,
+              role : role ?? null
             })
           }
         );

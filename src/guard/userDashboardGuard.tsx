@@ -17,7 +17,7 @@ export default function UserDashboardGuard({children} : {children : ReactNode}){
     
         if(
           status === "authenticated" &&
-          session?.role !== "user"
+          session?.role !== "customer"
         ){
           router.push("/unauthorized");
         }

@@ -9,6 +9,17 @@
 }
 
 
+.contact-us-bg{
+  background-image: url('/images/contact-us-hero.png');
+  background-position: center center;
+  background-size: cover;
+  background-origin:  border-box;
+  background-repeat: no-repeat;
+
+
+}
+
+
 .small-sec-pic{
   background-image: url('/images/bg-flower.png');
   background-position: center  ;

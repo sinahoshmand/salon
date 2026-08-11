@@ -1,8 +1,18 @@
 
-.bg-register{
-    background-image: url('/images/login.png');
-    background-position: center center;
-    background-origin: border-box;
-    background-size: cover;
+.bg-login{
+    background-image: url('/images/bg-login.png');
+    background-position: left ;
+    background-origin:  border-box;
+    background-size:  cover;
     background-repeat: no-repeat;
   }
+
+
+  .bg-register{
+    background-image: url('/images/bg-register.png');
+    background-position: left ;
+    background-origin:  border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+

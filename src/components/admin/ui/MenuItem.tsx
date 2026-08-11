@@ -1,12 +1,14 @@
 "use client";
-import Link from "next/link";
+ 
 import { useState } from "react";
 import { IconType } from "react-icons";
 import { BiDownArrowCircle, BiUpArrowCircle } from "react-icons/bi";
 import Dropdown from "./DropDown";
-import { usePathname } from "next/navigation";
+ 
 import { useSelector } from "react-redux";
 import { RootState } from "@/src/redux/store";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/src/i18n/navigation";
 
 interface Child {
   id: number;
@@ -31,6 +33,7 @@ type Props = {
 };
 
 export default function MenuItem({ item, is_dropdown = false , setOpen , open }: Props) {
+  const t = useTranslations("adminMenu")
   const Icon = item.icon;
   const [reseve, setReseve] = useState<number | null>(null);
   const pathname: string = usePathname();
@@ -96,7 +99,7 @@ export default function MenuItem({ item, is_dropdown = false , setOpen , open }:
           <div className={`flex gap-3 items-center`}>
             <Icon color="#ffff" size={24} />
             {!collapsed && (
-              <span className="text-[#ffff] text-[14px]">{item.name}</span>
+              <span className="text-[#ffff] text-[14px]">{t(item.name)}</span>
             )}
           </div>
         </Link>
