@@ -4,8 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { cookies } from "next/headers";
 
 export const authOptions : AuthOptions = {
-  debug:true,
-  providers: [
+   providers: [
     CredentialsProvider({
       name: "credentials",
 

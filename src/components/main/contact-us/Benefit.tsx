@@ -1,3 +1,4 @@
+"use client"
 import { BiCalendarEdit, BiChat, BiMoney, BiVoicemail } from "react-icons/bi";
 import { BsPhone, BsPhoneVibrate, BsStar } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
