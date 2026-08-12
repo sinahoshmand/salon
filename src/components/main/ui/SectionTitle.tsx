@@ -15,8 +15,8 @@ export default function SectionTitle({title , link_name , href="#" , center=fals
             <div className="flex gap-3 items-center">
                 <BsStars color="var(--champagne-gold)" size={27}/>
                   <h2 className="flex font-bold gap-2 items-center 
-                  text-[var(--secondary-text)] text-[22px]">{title}</h2>
-                <BsStars color="var(--champagne-gold)" size={27}/>
+                  text-[var(--secondary-text)] text-[21px]">{title}</h2>
+                 
             </div>
             {link_name && <Link href={href} className="flex   gap-2 
             items-center text-[var(--primary)] text-[14px]">

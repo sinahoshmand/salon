@@ -74,8 +74,9 @@ export default function Testimonial() {
             className="px-15 py-10 grid grid-cols-4 gap-7 rounded-[16px]"
             style={{
               backgroundImage: "url('/images/bg-flower.png')",
-              backgroundOrigin: "content-box",
-              backgroundPosition: "center",
+              backgroundOrigin: "border-box",
+              backgroundSize : "cover",
+              backgroundPosition: "right",
               backgroundRepeat: "no-repeat",
             }}
           >

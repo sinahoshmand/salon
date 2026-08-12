@@ -79,8 +79,6 @@ export const authOptions : AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      idToken: true,
-      checks: ["state"],
     })
   ],
 
@@ -138,7 +136,6 @@ export const authOptions : AuthOptions = {
         token.accessToken = user.accessToken;
         token.role = user.role
       }
-
       return token;
     },
 
