@@ -19,7 +19,7 @@ export default function Page() {
         
         </div>
 
-        <div className="w-full flex flex-row justify-start mt-20 items-center">
+        <div className="w-full flex flex-row justify-start   items-center">
           <div className="bg-[var(--surface)] w-[550px]    flex mt-10 mb-10 flex-col items-center rounded-[20px]   shadow-md p-8 mt-10">
             <div className="p-6 bg-[var(--primary)]/20 max-w-max rounded-full">
               <FaUserPlus color="var(--primary)" size={40} />

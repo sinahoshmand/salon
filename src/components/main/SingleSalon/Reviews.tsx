@@ -13,7 +13,13 @@ import "swiper/css/pagination";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { HiPlus } from "react-icons/hi2";
-export default function Reviews() {
+import Data from "@/src/types/single-salon.type";
+
+type Props = {
+  data: Data;
+};
+
+export default function Reviews({ data }: Props) {
   const [open, setOpen] = useState<number | null>(0);
 
   const faqs = [
@@ -45,10 +51,12 @@ export default function Reviews() {
         <div className="col-span-3">
           <SectionTitle title={"Customer Reviews"} />
           <div className="flex gap-3 items-center mt-7">
-            <strong className="text-[35px] text-[var(--text)]">4.9</strong>
+            <strong className="text-[35px] text-[var(--text)]">
+              {data?.ratings}
+            </strong>
             <Rating
               style={{ maxWidth: 100 }}
-              value={5}
+              value={data?.ratings}
               readOnly
               itemStyles={{
                 itemShapes: RoundedStar,
@@ -60,48 +68,73 @@ export default function Reviews() {
             />
           </div>
           <p className="text-[14px] mt-1 text-[var(--secondary-text)]">
-            Based on 1,245 reviews
+            Based on {data?.reviews_count} reviews
           </p>
           {/* Rating item */}
-          <RateItem rate={5} persent={90} />
-          <RateItem rate={4} persent={75} />
-          <RateItem rate={3} persent={35} />
-          <RateItem rate={2} persent={22} />
-          <RateItem rate={1} persent={13} />
+          <RateItem rate={5} persent={data?.percentage?.five_star} />
+          <RateItem rate={4} persent={data?.percentage?.four_star} />
+          <RateItem rate={3} persent={data?.percentage?.tree_star} />
+          <RateItem rate={2} persent={data?.percentage?.two_star} />
+          <RateItem rate={1} persent={data?.percentage?.one_star} />
         </div>
         <div className="col-span-6">
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={22}
-            className="mt-20 pb-14"
-            breakpoints={{
-              0: {
-                slidesPerView: 1.15,
-              },
-              640: {
-                slidesPerView: 1,
-              },
-              1024: {
-                slidesPerView: 2,
-              },
-              1400: {
-                slidesPerView: 2,
-              },
-            }}
-          >
-            <SwiperSlide>
-              <ReviewCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ReviewCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ReviewCard />
-            </SwiperSlide>
-          </Swiper>
+          {data?.reviews.length === 0 ? (
+            <div className="bg-[var(--surface)] mt-20 mb-14 rounded-2xl shadow-md p-10 flex flex-col items-center justify-center text-center min-h-[220px]">
+              <div className="w-14 h-14 rounded-full bg-[var(--primary)]/10 flex items-center justify-center mb-5">
+                <svg
+                  className="w-7 h-7 text-[var(--primary)]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.8}
+                    d="M7 8h10M7 12h6m-8 8 3.5-3H18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h1v3z"
+                  />
+                </svg>
+              </div>
 
-          <button
-            className="border-2 mt-4 text-[14px] 
+              <h3 className="text-lg font-semibold text-[var(--foreground)]">
+                No Reviews Yet
+              </h3>
+
+              <p className="mt-2 max-w-md text-sm text-[var(--muted-foreground)] leading-6">
+                This salon doesn't have any reviews yet. Be the first to share
+                your experience!
+              </p>
+            </div>
+          ) : (
+            <div>
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={22}
+                className="mt-20 pb-14"
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1.15,
+                  },
+                  640: {
+                    slidesPerView: 1,
+                  },
+                  1024: {
+                    slidesPerView: 2,
+                  },
+                  1400: {
+                    slidesPerView: 2,
+                  },
+                }}
+              >
+                {data?.reviews?.map((comment) => (
+                  <SwiperSlide key={comment.id}>
+                    <ReviewCard item={comment} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <button
+                className="border-2 mt-4 text-[14px] 
           justify-center group m-auto w-[280px] text-[var(--text)] 
           hover:bg-[var(--primary)]
            transition-all
@@ -110,12 +143,16 @@ export default function Reviews() {
           gap-2 text-center flex 
           items-center font-bold border-[var(--primary)] 
           rounded-[10px]   py-3 px-3"
-          >
-            View All Reviews
-            <BsArrowRight
-              className={"group-hover:text-[var(--surface)] text-[var(--text)]"}
-            />
-          </button>
+              >
+                View All Reviews
+                <BsArrowRight
+                  className={
+                    "group-hover:text-[var(--surface)] text-[var(--text)]"
+                  }
+                />
+              </button>
+            </div>
+          )}
         </div>
         <div className="col-span-3">
           <SectionTitle title="FAQs" />

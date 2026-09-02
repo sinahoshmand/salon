@@ -8,19 +8,7 @@ export default function Footer() {
           محفوظ است.
         </p>
 
-        <div className="flex items-center gap-4 text-sm">
-          <button className="text-slate-500 hover:text-[#7C3AED] transition-colors">
-            مستندات
-          </button>
-
-          <button className="text-slate-500 hover:text-[#7C3AED] transition-colors">
-            پشتیبانی
-          </button>
-
-          <button className="text-slate-500 hover:text-[#7C3AED] transition-colors">
-            نسخه 1.0.0
-          </button>
-        </div>
+       
       </div>
     </div>
   );

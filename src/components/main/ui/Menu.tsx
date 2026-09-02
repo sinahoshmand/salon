@@ -2,15 +2,27 @@
 import { Link, usePathname, useRouter } from "@/src/i18n/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import mainMenus from "@/src/data/mainMenu";
 import { FaArrowCircleDown, FaGlobe, FaSearch } from "react-icons/fa";
 import { useLocale } from "next-intl";
 import { CgArrowDown } from "react-icons/cg";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-export default function Menu() {
-  const {  status} = useSession();
+
+interface MenuData {
+  id: string,
+  name : string,
+  href : string,
+  children : []
+}
+
+type Prop = {
+  data : MenuData[]
+}
+
+
+export default function Menu({data} : Prop) {
+  const { data : session ,  status} = useSession();
   const[open ,  setOpen] = useState<Boolean>(false)
   const locale = useLocale();
   const [scrollY, setScrollY] = useState(0);
@@ -73,9 +85,8 @@ export default function Menu() {
       {/* Menu */}
       <nav className="hidden lg:flex items-center">
         <ul className="flex items-center gap-10">
-          {mainMenus.map((menu) => {
+          {data?.map((menu) => {
             const active = pathname === menu.href;
-
             return (
               <li key={menu.id} className="relative">
                 <Link
@@ -113,7 +124,7 @@ export default function Menu() {
       
 
         <div className="relative">
-          <button
+          {/* <button
             onClick={() => {
                setOpen((prev) => !prev)
             }}
@@ -134,7 +145,7 @@ export default function Menu() {
             <FaGlobe color="var(--text)" size={15} />
             {locale === "en" ? "English" : "فارسی"}
             {open ? (<BiChevronDown color="var(--text)" size={18} />) : (<BiChevronUp color="var(--text)" size={18} />)}
-          </button>
+          </button> */}
           {open &&
           <div className="absolute top-12 left-0 z-20 w-44 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-2 shadow-lg">
             <ul className="space-y-1">
@@ -170,23 +181,56 @@ export default function Menu() {
         </div>
 
       {status === "authenticated" ? (
+         <div>
+            {session.role === "super_admin" && 
+             <Link href={'/admin'}
         
-
-        <Link href={'/register'}
+             className="
+               px-6 py-2.5
+               rounded-lg
+               bg-[var(--primary)]
+               text-white
+               font-medium
+               transition
+               hover:opacity-90
+             "
+           >
+             Admin Dashboard
+           </Link>
+            }
+              {session.role === "salon_owner" && 
+             <Link href={'#'}
         
-          className="
-            px-6 py-2.5
-            rounded-lg
-            bg-[var(--primary)]
-            text-white
-            font-medium
-            transition
-            hover:opacity-90
-          "
-        >
-          Register
-        </Link>
-
+             className="
+               px-6 py-2.5
+               rounded-lg
+               bg-[var(--primary)]
+               text-white
+               font-medium
+               transition
+               hover:opacity-90
+             "
+           >
+               Salon Panel
+           </Link>
+            }
+              {session.role === "costumer" && 
+             <Link href={'/user/dashboard'}
+        
+             className="
+               px-6 py-2.5
+               rounded-lg
+               bg-[var(--primary)]
+               text-white
+               font-medium
+               transition
+               hover:opacity-90
+             "
+           >
+              Costumer Panel
+           </Link>
+            }
+          </div>
       ) : (
 
       <>

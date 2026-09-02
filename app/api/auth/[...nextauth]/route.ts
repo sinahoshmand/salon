@@ -114,7 +114,6 @@ export const authOptions : AuthOptions = {
         const data = await response.json();
       
         if(!response.ok){
-          console.log("GOOGLE LOGIN ERROR:", data);
           return false;
         }
         // اطلاعات لاراول را روی user نگه میداریم
@@ -154,8 +153,6 @@ export const authOptions : AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-console.log("AUTH ROUTE LOADED");
-
-const handler = NextAuth(authOptions);
+ const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

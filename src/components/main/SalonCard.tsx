@@ -6,11 +6,32 @@ import { BiBuildings } from "react-icons/bi";
 import { BsStarFill } from "react-icons/bs";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
- 
 
-export default function SalonCard() {
+interface Category {
+  id: string | number;
+  name: string;
+  slug: string;
+}
+
+interface Item {
+  id: string | number;
+  city : string,
+  state : string,
+  name: string;
+  image: string;
+  slug: string;
+  rating: number;
+  categories: Category[];
+}
+
+type Props = {
+  item: Item;
+};
+
+export default function SalonCard({ item }: Props) {
   return (
-    <div className="
+    <div
+      className="
     group
     flex
     flex-col
@@ -25,13 +46,15 @@ export default function SalonCard() {
     hover:scale-[1.02]
     hover:border-[var(--primary)]/20
     hover:shadow-[0_20px_60px_rgba(244,114,182,0.18)]
-  ">
+  "
+    >
       <div className={"relative w-full"}>
         <Image
+          unoptimized
           width={800}
           height={600}
           className="w-full h-[160px] rounded-t-[13px] object-cover"
-          src={"/images/salon1.webp"}
+          src={item.image}
           alt="salon"
         />
         <div
@@ -40,7 +63,7 @@ export default function SalonCard() {
           }
         >
           <BsStarFill size={12} color={"var(--champagne-gold)"} />
-          <p className=" text-[12px]  ">4.5</p>
+          <p className=" text-[12px]  ">{item.rating}</p>
         </div>
         <div
           className={
@@ -53,28 +76,24 @@ export default function SalonCard() {
       </div>
       <div className="p-4 flex flex-col">
         <h2 className="font-bold text-[18px] text-[var(--text)]">
-          Luxe Beuty Studio
+          {item.name}
         </h2>
         <span className="  text-[13px] mt-1 items-center text-[var(--secondary-text)] flex gap-1">
           <FaMapMarkerAlt color="var(--secondary-text)" size={12} />
-          New York,NY
+          {item.state},{item.city}
         </span>
         <div className="flex flex-row gap-2 flex-wrap mt-3">
-          <div className="bg-[var(--rose-gold)]  py-1 px-2 shadow-sm rounded-[8px]">
-            <p className="text-[13px]   text-[#ffff]">Hair</p>
-          </div>
-          <div className="bg-[var(--rose-gold)]   py-1 px-2 shadow-sm rounded-[8px]">
-            <p className="text-[13px] text-[#ffff]">Makeup</p>
-          </div>
-          <div className="bg-[var(--rose-gold)]   py-1 px-2 shadow-sm rounded-[8px]">
-            <p className="text-[13px] text-[#ffff]">Nails</p>
-          </div>
+          {item?.categories?.map((category) => (
+            <Link href={'#'} key={category.id} className="bg-[var(--rose-gold)]  py-1 px-2 shadow-sm rounded-[8px]">
+              <p className="text-[13px]   text-[#ffff]">{category.name}</p>
+            </Link>
+          ))}
         </div>
         <Link
           className="w-full bg-[var(--primary)] 
                  rounded-[10px] transition-all duration-150 mt-4 hover:bg-[var(--primary-hover)] 
                  py-1.5 text-center text-[14px]   text-[#ffff]"
-          href={"/salon/salon-number-one"}
+          href={`/salon/${item.slug}`}
         >
           Book Appointment
         </Link>

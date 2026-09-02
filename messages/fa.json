@@ -1,8 +1,113 @@
 {
-  "adminMenu" : {
+  "adminMenu": {
     "home": "خانه",
     "salons": "سالن‌ ها",
-    "settings": "تنظیمات"
-    
+    "settings": "تنظیمات",
+    "cats": "سرویس ها",
+    "admins": "ادمین ها",
+    "roles": "نقش ها",
+    "users": "کاربران",
+    "salonOwners": "مدیر سالن ها",
+    "Support": "پشتیبانی",
+    "Salon-owners": "مدیران سالن",
+    "Salon-owner-pending": "مدیران سالن در انتظار تأیید",
+    "Salon-owner-verified": "مدیران سالن تأیید شده",
+    "Salon-owner-blocked": "مدیران سالن مسدود شده",
+    "payments": "امور مالی",
+    "vip-payments": "پرداخت‌ های اشتراک",
+    "reserve-payments": "پرداخت‌ های رزرو",
+    "verified-salons": "سالن‌ های تأیید شده",
+    "pending-salons": "سالن‌ های در انتظار تأیید",
+    "tickets": "تیکت‌ ها",
+    "contact-us": "تماس با ما",
+    "ai-chat-bot": "چت‌ بات هوش مصنوعی",
+    "menus" : "منو ها",
+    "blogs": "وبلاگ",
+    "blog-category": "دسته‌بندی وبلاگ",
+    "blog": "مطالب وبلاگ",
+    "reviews": "نظرات"
+  },
+  "breadcrumb": {
+    "define_working_hours": "تعریف ساعات کاری",
+    "salon_details": "جزئیات سالن"
+  },
+  "admin-main-services": {
+    "title": "سرویس‌ های اصلی",
+    "meta": "مدیریت سرویس ها",
+    "name": "نام",
+    "slug": "اسلاگ",
+    "icon": "آیکن",
+    "image": "عکس",
+    "status": "وضعیت",
+    "actions": "عملیات",
+    "create": "ایجاد سرویس",
+    "edit": "ویرایش سرویس"
+  },
+ "admin-main-menus": {
+  "title": "منوهای اصلی",
+  "meta": "مدیریت منوهای اصلی",
+  "name": "نام منو",
+  "href": "لینک",
+  "status": "وضعیت",
+  "actions": "عملیات",
+  "create": "ایجاد منو",
+  "edit": "ویرایش منو",
+    "order" : "ترتیب منو"
+},
+"admin-main-salon-pending": {
+  "stats": {
+    "overall-rating": "امتیاز کلی",
+    "out-of-five": "از 5",
+    "total-bookings": "تعداد رزرو",
+    "monthly-revenue": "درآمد ماهیانه",
+    "currency": "تومان",
+    "active-services": "خدمات فعال",
+    "service": "خدمت"
+  },
+  "time" : "زمان",
+  "watch" : "مشاهده صفحه سالن",
+  "create" : "ایجاد سالن" ,
+  "title": "سالن ها",
+  "city-state" : "شهر/استان",
+  "meta": "مدیریت سالن ها",
+  "phone" : "شماره تماس سالن",
+  "image" : "عکس",
+  "id": "شناسه",
+  "salon": "سالن",
+  "owner": "مالک سالن",
+  "mobile": "شماره موبایل",
+  "email": "ایمیل",
+  "request-date": "تاریخ ایجاد",
+  "status": "وضعیت",
+  "actions": "عملیات",
+
+  "pending": "در انتظار بررسی",
+  "approved": "تأیید شده",
+  "rejected": "رد شده",
+
+  "approve": "تأیید درخواست",
+  "reject": "رد درخواست",
+  "view": "مشاهده",
+  "edit": "ویرایش",
+  "delete": "حذف",
+
+  "search": "جستجو",
+  "filter": "فیلتر",
+  "all": "همه",
+
+  "empty": "درخواستی برای نمایش وجود ندارد",
+
+  "confirm-approve": "آیا از تأیید این درخواست مطمئن هستید؟",
+  "confirm-reject": "آیا از رد این درخواست مطمئن هستید؟",
+  "confirm-delete": "آیا از حذف این درخواست مطمئن هستید؟",
+
+  "approve-success": "درخواست با موفقیت تأیید شد",
+  "reject-success": "درخواست با موفقیت رد شد",
+  "delete-success": "درخواست با موفقیت حذف شد"
+},
+  "adminPannel": {
+    "admin": "پنل مدیریت",
+    "add": "افزودن",
+    "search": "جستجو"
   }
 }

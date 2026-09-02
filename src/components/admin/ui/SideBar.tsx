@@ -18,16 +18,16 @@ export default function SideBar() {
     
   return (
     <div onMouseLeave={() => setOpenCollapse(null)} 
-     className={`h-screen transition-all duration-300 ${collapsed ? 'w-[80px]' : 'w-[250px]'}`}>  
-    <div className="bg-[#7C3AED] h-full max-h-full">
+     className={`h-screen transition-all  duration-300 ${collapsed ? 'w-[80px]' : 'w-[250px]'}`}>  
+    <div className="bg-[#405189] overflow-y-auto custom-scroll   pb-6 h-full max-h-full ">
       <div className="w-full flex justify-center items-center">
         <Link href={"/admin/dashboard"}>
            <Image src={'/images/logo.png'} width={100} height={70} alt="sinahoushmand"/>
         </Link>
       </div>
-      <ul className="  flex flex-col px-4 gap-3 relative">
+      <ul className="  flex flex-col px-4  gap-3 relative">
            {menus.map((menu) => (
-              <div key={menu.id} className="relative" >
+              <div key={menu.id} className="relative " >
                 <MenuItem  item={menu} is_dropdown={menu.has_sub} setOpen={setOpenCollapse} open={openCollapse}/>
                 {collapsed &&<CollapsedMenu   menu={menu} setOpen={setOpenCollapse} open={openCollapse}/>}
               </div>

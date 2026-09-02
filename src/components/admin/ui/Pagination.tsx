@@ -33,11 +33,11 @@ export default function Pagination({ meta, page, setPage }: Props) {
         نمایش {meta.to} تا {meta.total} از {meta.per_page}{" "}
       </p>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1">
         <button
           disabled={meta.current_page === 1}
           onClick={() => setPage(meta.current_page - 1)}
-          className={`px-4 py-2 rounded-xl border border-slate-200 
+          className={`px-4  text-[12px] py-2 rounded-xl border border-slate-200 
              ${meta.current_page === 1 ? " bg-slate-300 text-slate-500 cursor-not-allowed" : "hover:bg-slate-50"}
              transition-all`}
         >
@@ -45,23 +45,36 @@ export default function Pagination({ meta, page, setPage }: Props) {
         </button>
 
         {meta?.links.map((link, index) => (
-          <div>
+          <div key={index}>
             {link.label !== "&laquo; Previous" &&
               link.label !== "Next &raquo;" && (
-                <button
+               <>
+                 {link.label === "..." ? (
+
+                  <span>
+                     ...
+                  </span>
+
+
+                 ):(
+
+                  <button
                   disabled={link.page === page}
                   key={index}
                   onClick={() => setPage(Number(link.page))}
-                  className={`w-10 h-10 rounded-xl transition-all
+                  className={`w-8.5 h-8.5 flex items-center justify-center text-[12px] rounded-xl transition-all
                       ${
                         link.page === page
                           ? "bg-slate-300 text-slate-500 cursor-not-allowed"
-                          : "bg-[#7C3AED] text-white hover:bg-[#6D28D9]"
+                          : "bg-[#405189] text-white hover:bg-[#405189]/50"
                       }
                     `}
                 >
                   {link.label}
                 </button>
+
+                 )}
+               </>
               )}
           </div>
         ))}
@@ -69,7 +82,7 @@ export default function Pagination({ meta, page, setPage }: Props) {
         <button
           disabled={meta.last_page === page}
           onClick={() => setPage(meta.current_page + 1)}
-          className={`px-4 py-2 rounded-xl border border-slate-200 
+          className={`px-4 py-2 rounded-xl text-[12px] border border-slate-200 
              ${meta.last_page === page ? " bg-slate-300 text-slate-500 cursor-not-allowed" : "hover:bg-slate-50"}
              transition-all`}
         >

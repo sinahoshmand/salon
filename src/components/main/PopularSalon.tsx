@@ -8,7 +8,30 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function PopularSalon() {
+
+interface Category {
+  id: string | number;
+  name: string;
+  slug: string;
+}
+
+
+interface Data {
+  id : string|number
+  name : string,
+  image : string,
+  city : string,
+  state : string,
+  slug : string,
+  rating : number,
+  categories : Category[]
+}
+
+type Props = {
+   data : Data[];
+}
+
+export default function PopularSalon({data} : Props) {
   return (
     <section className="mt-13 container-c">
       <SectionTitle
@@ -44,21 +67,12 @@ export default function PopularSalon() {
         }}
         className="mt-3"
       >
-        <SwiperSlide className="py-4">
-          <SalonCard />
-        </SwiperSlide>
-        <SwiperSlide className="py-4">
-          <SalonCard />
-        </SwiperSlide>
-        <SwiperSlide className="py-4">
-          <SalonCard />
-        </SwiperSlide>
-        <SwiperSlide className="py-4">
-          <SalonCard />
-        </SwiperSlide>
-        <SwiperSlide className="py-4">
-          <SalonCard />
-        </SwiperSlide>
+        {data?.map((item) => (
+         <SwiperSlide key={item.id} className="py-4">
+           <SalonCard item={item}/>
+         </SwiperSlide>
+        ))}
+       
       </Swiper>
     </section>
   );

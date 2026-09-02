@@ -1,7 +1,113 @@
 {
-  "adminMenu" : {
+  "adminMenu": {
     "home": "Home",
     "salons": "Salons",
-    "settings": "Settings"
+    "settings": "Settings",
+    "cats": "MainServices",
+    "admins": "Admins",
+    "roles": "Roles",
+    "users": "Users",
+    "salonOwners": "SalonOwners",
+    "Support": "Support",
+    "Salon-owners": "Salon Owners",
+    "Salon-owner-pending": "Pending Approval",
+    "Salon-owner-verified": "Verified",
+    "Salon-owner-blocked": "Blocked",
+    "payments": "Finance",
+    "vip-payments": "Subscription Payments",
+    "reserve-payments": "Booking Payments",
+    "verified-salons": "Verified Salons",
+    "pending-salons": "Pending Salons",
+    "tickets": "Tickets",
+    "contact-us": "Contact Us",
+    "ai-chat-bot": "AI Chatbot",
+    "menus": "menus",
+    "blogs": "Blog",
+    "blog-category": "Blog Categories",
+    "blog": "Blog Posts",
+    "reviews": "Reviews"
+  },
+  "admin-main-services": {
+    "title": "Main Services",
+    "meta": "Service Management",
+    "name": "Name",
+    "slug": "Slug",
+    "icon": "Icon",
+    "image": "Image",
+    "status": "Status",
+    "actions": "Actions",
+    "create": "Create Service",
+    "edit": "Edit Service"
+  },
+  "admin-main-menus": {
+    "title": "Main Menus",
+    "meta": "Manage Main Menus",
+    "name": "Menu Name",
+    "href": "Link",
+    "status": "Status",
+    "actions": "Actions",
+    "create": "Create Menu",
+    "edit": "Edit Menu",
+    "order" : "Menu Order"
+  },
+  "breadcrumb": {
+    "define_working_hours": "Define Working Hours",
+    "salon_details": "Salon Details"
+  },
+ "admin-main-salon-pending": {
+  "stats": {
+    "overall-rating": "Overall Rating",
+    "out-of-five": "out of 5",
+    "total-bookings": "Total Bookings",
+    "monthly-revenue": "Monthly Revenue",
+    "currency": "$",
+    "active-services": "Active Services",
+    "service": "service"
+  },
+ "time" : "Time",
+ "watch": "View Salon Page",
+  "create" : "Create Salon" ,
+  "title": "Salons",
+  "meta": "Manage salons",
+  "city-state" : "city/state",
+  "phone" : "Call Number",
+  "image" : "Picture",
+  "id": "ID",
+  "salon": "Salon",
+  "owner": "Salon Owner",
+  "mobile": "Mobile Number",
+  "email": "Email",
+  "request-date": "Request Date",
+  "status": "Status",
+  "actions": "Actions",
+
+  "pending": "Pending Review",
+  "approved": "Approved",
+  "rejected": "Rejected",
+
+  "approve": "Approve Request",
+  "reject": "Reject Request",
+  "view": "View",
+  "edit": "Edit",
+  "delete": "Delete",
+
+  "search": "Search",
+  "filter": "Filter",
+  "all": "All",
+
+  "empty": "No requests to display",
+
+  "confirm-approve": "Are you sure you want to approve this request?",
+  "confirm-reject": "Are you sure you want to reject this request?",
+  "confirm-delete": "Are you sure you want to delete this request?",
+
+  "approve-success": "Request approved successfully",
+  "reject-success": "Request rejected successfully",
+  "delete-success": "Request deleted successfully"
+},
+  "adminPannel": {
+    "admin": "Admin Panel",
+    "add": "Add",
+    "search": "search"
   }
 }

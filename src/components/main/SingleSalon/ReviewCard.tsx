@@ -1,7 +1,22 @@
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import Image from "next/image";
-export default function ReviewCard(){
+
+interface Item {
+  id:string|number,
+  rating : number,
+  review : string,
+  date : string,
+  user : string,
+  image : string
+}
+
+type Props = {
+  item : Item
+}
+
+
+export default function ReviewCard({item} : Props){
     return(
         <div className="bg-[var(--surface)] shadow-md px-6 py-6 rounded-[8px]">
         <div className="flex gap-3 items-center">
@@ -14,17 +29,17 @@ export default function ReviewCard(){
           />
           <div className="flex flex-col">
             <p className="text-[var(--text)] text-[16px]">
-              Emily Johnson
+              {item.user}
             </p>
             <p className="text-[var(--secondary-text)] text-[13px]">
-              2 days ago
+               {item.date}
             </p>
           </div>
         </div>
         <Rating
           className="mt-4"
           style={{ maxWidth: 120 }}
-          value={5}
+          value={item.rating}
           readOnly
           itemStyles={{
             itemShapes: RoundedStar,
@@ -35,9 +50,7 @@ export default function ReviewCard(){
           }}
         />
         <p className={`text-[13px] mt-2  text-[var(--secondary-text)]`}>
-          The all-in-one platform to capture, measure, and showcase
-          customer love  testimonials, case studies, NPS, and brand
-          monitoring in one place.
+           {item.review}
         </p>
       </div>
     )

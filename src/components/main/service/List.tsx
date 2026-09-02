@@ -4,10 +4,23 @@ import Card from "./Card";
 import { BiMoney } from "react-icons/bi";
 import { TiThumbsUp } from "react-icons/ti";
 
-export default function List() {
+interface Data {
+  id: string | number;
+  image: string;
+  icon: string;
+  name: string;
+  slug: string;
+  related_services:number
+}
+
+type Prop = {
+  data: Data[];
+};
+
+export default function List({data} : Prop) {
   return (
     <section className="container-c">
-      <div className="flex flex-col items-center mt-6">
+      <div className="flex flex-col items-center mt-10">
         <h2 className="text-[28px] text-[var(--text)]  font-bold  ">Browse by Category</h2>
         <p className="text-[15px] text-[var(--secondary-text)] leading-6 mt-1">
               Choose a category to view all availble services
@@ -15,12 +28,9 @@ export default function List() {
              <div className="w-[60px] h-[3px] bg-[var(--primary)] mt-3"></div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 mt-8 gap-8">
-           <Card/>
-           <Card/>
-           <Card/>
-           <Card/>
-           <Card/>
-           <Card/>
+           {data?.map((item) => (
+              <Card key={item.id} item={item}/>
+           ))}
       </div>
       <div className="mt-8 mb-6 w-full bg-[var(--rose-gold)]/30 py-8 px-6 rounded-[10px]">
            <div className="flex flex-col w-full items-center ">

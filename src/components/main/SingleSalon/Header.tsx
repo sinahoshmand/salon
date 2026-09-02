@@ -9,7 +9,13 @@ import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { BiCalendarEvent } from "react-icons/bi";
 import { PiPhoneCall } from "react-icons/pi";
-export default function Header() {
+import Data from "@/src/types/single-salon.type";
+
+type Props = {
+  data : Data
+}
+
+export default function Header({data} : Props) {
   return (
     <div className="grid grid-cols-12 gap-8 mt-6 ">
       <div className="col-span-4 relative">
@@ -35,7 +41,8 @@ export default function Header() {
           <p className=" text-[12px] ">Verified</p>
         </div>
         <Image
-          src={"/images/salon.jpg"}
+          unoptimized
+          src={data.image}
           className="w-full h-[400px] shadow-sm rounded-[10px]"
           width={800}
           height={600}
@@ -46,19 +53,19 @@ export default function Header() {
         <div className="flex flex-col about-banner bg-[var(--surface)] shadow-md border
             border-[var(--border)] rounded-[10px] px-5 py-6">
           <h1 className="text-[var(--text)] text-[30px] font-bold ">
-            Luxe Beauty Studio
+            {data.name}
           </h1>
           <span className="text-[15px] mt-2 items-center text-[var(--secondary-text)] flex gap-1">
             <FaMapMarkerAlt color="var(--secondary-text)" size={15} />
-            New York,NY
+            {data.state},{data.city}
           </span>
           <div className="flex flex-row gap-1.5 mt-3 items-center">
             <span className="text-[13px] text-[var(--secondary-text)] font-semibold">
-              5.0
+              {data.ratings}
             </span>
             <Rating
               style={{ maxWidth: 80 }}
-              value={5}
+              value={data.ratings}
               readOnly
               itemStyles={{
                 itemShapes: RoundedStar,
@@ -69,30 +76,19 @@ export default function Header() {
               }}
             />
             <span className="text-[13px] text-[var(--secondary-text)]/80 font-semibold">
-              (324 Reviews)
+              ({data.reviews_count} Reviews)
             </span>
           </div>
           <div className="flex flex-row gap-2 flex-wrap mt-4">
-            <div className="bg-[var(--rose-gold)]/20  py-1 px-3 shadow-sm rounded-[8px]">
-              <p className="text-[13px]   text-[var(--primary)]">Hair</p>
-            </div>
-            <div className="bg-[var(--rose-gold)]/20   py-1 px-3 shadow-sm rounded-[8px]">
-              <p className="text-[13px]  text-[var(--primary)]">Makeup</p>
-            </div>
-            <div className="bg-[var(--rose-gold)]/20   py-1 px-3 shadow-sm rounded-[8px]">
-              <p className="text-[13px]  text-[var(--primary)]">Nails</p>
-            </div>
-            <div className="bg-[var(--rose-gold)]/20   py-1 px-3 shadow-sm rounded-[8px]">
-              <p className="text-[13px]  text-[var(--primary)]">Facial</p>
-            </div>
+            {data?.categories.map((category) => (
+              <div key={category.id} className="bg-[var(--rose-gold)]/20  py-1 px-3 shadow-sm rounded-[8px]">
+                <p className="text-[13px]   text-[var(--primary)]">{category.name}</p>
+              </div>
+            ))}
+            
           </div>
-          <p className="mt-5 text-[var(--secondary-text)] leading-6.5 text-[14px]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas
-            purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris
-            rhoncus aenean vel elit scelerisque In egestas erat imperdiet sed
-            euismod nisi porta lorem mollis
-          </p>
+          <div  dangerouslySetInnerHTML={{ __html: data.small_desc }} 
+          className="mt-5 text-[var(--secondary-text)] leading-6.5 text-[14px]"></div>
           <div className="flex flex-row items-center gap-4 mt-4">
             <div className="flex flex-row gap-2 border border-[var(--border)] p-2 rounded-[7px] items-center">
               <FaList color="var(--primary)" size={13} />

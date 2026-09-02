@@ -31,7 +31,7 @@ export default function Form() {
   const [request, setRequest] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [remember, setRemember] = useState<boolean>(false);
+  const [remember, setRemember] = useState<number>(0);
   const router = useRouter();
  
 
@@ -48,7 +48,7 @@ export default function Form() {
     const result = await signIn("credentials", {
       email,
       password,
-      remember: remember ?? false,
+      remember,
       redirect: false,
     });
 
@@ -205,7 +205,7 @@ justify-between
     "
           >
             <input
-              onChange={(e) => setRemember(e.target.checked)}
+              onChange={(e) => setRemember(Number(e.target.checked))}
               type="checkbox"
               className="
       w-4

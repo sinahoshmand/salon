@@ -1,140 +1,119 @@
-.header-bg{
-    background-image: url('/images/main.png');
-    background-position: center center;
-    background-size: cover;
-    background-origin:  border-box;
-    background-repeat: no-repeat;
-
- 
-}
-
-
-.contact-us-bg{
-  background-image: url('/images/contact-us-hero.png');
+.header-bg {
+  background-image: url("/images/main.png");
   background-position: center center;
   background-size: cover;
-  background-origin:  border-box;
-  background-repeat: no-repeat;
-
-
-}
-
-
-.small-sec-pic{
-  background-image: url('/images/bg-flower.png');
-  background-position: center  ;
-  background-size: cover;
-  background-origin:  border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
 }
 
-
-
-.salon-bg{
-  background-image: url('/images/salon-banner.png');
-  background-position: center  ;
+.reserve-bg {
+  background-image: url("/images/reserve-bg.png");
+  background-position: center center;
   background-size: cover;
   background-origin: content-box;
   background-repeat: no-repeat;
-
-
 }
 
-
-.header-fa-bg{
-  background-image: url('/images/banner-fa.png');
+.contact-us-bg {
+  background-image: url("/images/contact-us-hero.png");
   background-position: center center;
   background-size: cover;
-  background-origin:  border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
- 
-
-
 }
 
+.small-sec-pic {
+  background-image: url("/images/bg-flower.png");
+  background-position: center;
+  background-size: cover;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+}
 
-.about-banner{
-  background-image: url('/images/about-banner.png');
+.salon-bg {
+  background-image: url("/images/salon-banner.png");
+  background-position: center;
+  background-size: cover;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+}
+
+.header-fa-bg {
+  background-image: url("/images/banner-fa.png");
+  background-position: center center;
+  background-size: cover;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+}
+
+.about-banner {
+  background-image: url("/images/about-banner.png");
   background-position: bottom;
   background-size: contain;
-  background-origin:  border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
-  
 }
 
-.about-banner2{
-  background-image: url('/images/about-banner.png');
+.about-banner2 {
+  background-image: url("/images/about-banner.png");
   background-position: right;
   background-size: cover;
-  background-origin:  border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
-  
 }
 
-
-.single-salon-about{
-  background-image: url('/images/about.png');
+.single-salon-about {
+  background-image: url("/images/about.png");
   background-position: bottom;
   background-size: cover;
-  background-origin:  border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
-  
 }
 
-
-.explain-bg{
-  background-image: url('/images/bg-flower.png');
+.explain-bg {
+  background-image: url("/images/bg-flower.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-
-.howitworks-bg{
-  background-image: url('/images/how-it-work-banner.png');
+.howitworks-bg {
+  background-image: url("/images/how-it-work-banner.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-
-.howitworks2-bg{
-  background-image: url('/images/how-it-work-banner2.png');
-  background-position:  top;
+.howitworks2-bg {
+  background-image: url("/images/how-it-work-banner2.png");
+  background-position: top;
   background-size: cover;
-  background-origin:  border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
 }
 
-
-
-
-.service-banner{
-  background-image: url('/images/service-banner.png');
+.service-banner {
+  background-image: url("/images/service-banner.png");
   background-position: center;
   background-size: cover;
-  background-origin:  border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
-  
 }
 
- 
 .swiper-button-prev,
 .swiper-button-next {
-  
   width: 42px;
   height: 42px;
 
   border-radius: 10px;
 
-  background: #C97B8B;
+  background: #c97b8b;
 
-  border: 1px solid #F0E8E1;
+  border: 1px solid #f0e8e1;
 
   color: #ffff !important;
 
-
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .swiper-button-prev::after,
@@ -145,27 +124,358 @@
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  background: #B96A7B;
+  background: #b96a7b;
 
   color: white !important;
 
   box-shadow:
-    0 0 20px #B96A7B,
-    0 0 40px #B96A7B;
+    0 0 20px #b96a7b,
+    0 0 40px #b96a7b;
 
   scale: 1.05;
 }
 
-
-.swiper-button-next svg{
-  width: 14px!important;
-  height: 14px!important;
+.swiper-button-next svg {
+  width: 14px !important;
+  height: 14px !important;
 }
 
-
-.swiper-button-prev svg{
-  width: 14px!important;
-  height: 14px!important;
+.swiper-button-prev svg {
+  width: 14px !important;
+  height: 14px !important;
 }
 
+.salon-calendar {
+  --calendar-primary: #c97b8b;
+  --calendar-primary-dark: #ad5f70;
+  --calendar-primary-light: rgba(201, 123, 139, 0.1);
+  --calendar-primary-soft: rgba(201, 123, 139, 0.06);
+  --calendar-text: var(--text);
+  --calendar-muted: #8f8f98;
 
+  width: 100% !important;
+  max-width: none !important;
+  display: block;
+}
+
+/* =========================
+   Main Wrapper
+========================= */
+
+.salon-calendar .rmdp-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 100% !important;
+
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.salon-calendar .rmdp-calendar {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+}
+
+.salon-calendar .rmdp-month {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.salon-calendar .rmdp-day-picker {
+  width: 100% !important;
+  max-width: none !important;
+  display: inline-block !important;
+}
+
+/* =========================
+   Header
+========================= */
+
+.salon-calendar .rmdp-header {
+  width: 100% !important;
+  padding: 0 0 20px !important;
+}
+
+.salon-calendar .rmdp-header-values {
+  color: var(--calendar-text) !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.2px;
+}
+
+.salon-calendar .rmdp-header-values span {
+  color: var(--calendar-text) !important;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+.salon-calendar .rmdp-arrow-container {
+  width: 40px !important;
+  height: 40px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+
+  background: var(--surface) !important;
+  box-shadow: none !important;
+
+  transition: all 0.2s ease !important;
+}
+
+.salon-calendar .rmdp-arrow-container:hover {
+  background: var(--calendar-primary-light) !important;
+  border-color: var(--calendar-primary) !important;
+}
+
+.salon-calendar .rmdp-arrow-container:hover .rmdp-arrow {
+  border-color: var(--calendar-primary) !important;
+}
+
+.salon-calendar .rmdp-arrow {
+  border-color: var(--calendar-text) !important;
+}
+
+/* =========================
+   Week Header
+========================= */
+
+.salon-calendar .rmdp-week {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.salon-calendar .rmdp-week-day {
+  width: 100% !important;
+  height: 40px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  color: var(--calendar-muted) !important;
+
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px;
+}
+
+/* =========================
+   Day
+========================= */
+
+.salon-calendar .rmdp-day {
+  width: 100% !important;
+  height: 54px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Number */
+.salon-calendar .rmdp-day span {
+  width: 42px !important;
+  height: 42px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  margin: 0 auto !important;
+
+  border-radius: 11px !important;
+
+  background: transparent !important;
+  color: var(--calendar-text) !important;
+
+  font-size: 14px !important;
+  font-weight: 700 !important;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+/* =========================
+   Available Day
+========================= */
+
+.salon-calendar .rmdp-day:not(.rmdp-disabled) span {
+  color: var(--calendar-text) !important;
+  font-weight: 700 !important;
+}
+
+/* =========================
+   Hover
+========================= */
+
+.salon-calendar .rmdp-day:not(.rmdp-disabled):not(.rmdp-selected):hover span {
+  background: var(--calendar-primary-light) !important;
+  color: var(--calendar-primary-dark) !important;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 4px 12px rgba(201, 123, 139, 0.12);
+}
+
+/* =========================
+   Selected
+========================= */
+
+.salon-calendar .rmdp-day.rmdp-selected span {
+  background: var(--calendar-primary) !important;
+  color: #ffffff !important;
+
+  border: 1px solid var(--calendar-primary) !important;
+
+  border-radius: 11px !important;
+
+  font-size: 15px !important;
+  font-weight: 800 !important;
+
+  box-shadow: 0 6px 16px rgba(201, 123, 139, 0.28) !important;
+
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Today
+========================= */
+
+.salon-calendar .rmdp-day.rmdp-today span {
+  background: var(--calendar-primary-soft) !important;
+
+  border: 1.5px solid var(--calendar-primary) !important;
+
+  color: var(--calendar-primary-dark) !important;
+
+  font-weight: 800 !important;
+}
+
+/* Today + Selected */
+
+.salon-calendar .rmdp-day.rmdp-selected.rmdp-today span {
+  background: var(--calendar-primary) !important;
+  border: 1px solid var(--calendar-primary) !important;
+  padding: 25px !important;
+  color: #ffffff !important;
+}
+
+/* =========================
+   Disabled
+========================= */
+
+.salon-calendar .rmdp-day.rmdp-disabled span {
+  background: transparent !important;
+
+  color: #c7c7cc !important;
+
+  opacity: 0.55 !important;
+
+  font-weight: 500 !important;
+
+  cursor: not-allowed !important;
+
+  box-shadow: none !important;
+}
+
+.salon-calendar .rmdp-day.rmdp-disabled:hover span {
+  background: transparent !important;
+  color: #c7c7cc !important;
+
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* =========================
+   Outside Days
+========================= */
+
+.salon-calendar .rmdp-day.rmdp-deactive span {
+  color: #e2e2e6 !important;
+  opacity: 0.4 !important;
+}
+
+/* =========================
+   Bottom / Shadow Cleanup
+========================= */
+
+.salon-calendar .rmdp-shadow {
+  box-shadow: none !important;
+}
+
+.salon-calendar * {
+  box-sizing: border-box;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+  .salon-calendar .rmdp-day {
+    height: 48px !important;
+  }
+
+  .salon-calendar .rmdp-day span {
+    width: 38px !important;
+    height: 38px !important;
+
+    border-radius: 9px !important;
+
+    font-size: 13px !important;
+  }
+
+  .salon-calendar .rmdp-week-day {
+    font-size: 11px !important;
+  }
+
+  .salon-calendar .rmdp-header-values {
+    font-size: 17px !important;
+  }
+}
+
+.modern-toast {
+  border: 1px solid #f0e8e1 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 30px rgba(23, 23, 23, 0.08) !important;
+  padding: 14px 18px !important;
+}
+.modern-toast-title {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #171717 !important;
+  margin: 0 !important;
+}
+.modern-toast-progress {
+  background: #c9a46b !important;
+}
+.swal2-icon.swal2-success {
+  border-color: #c97b8b !important;
+  color: #c97b8b !important;
+}
+.swal2-icon.swal2-error {
+  border-color: #b96a7b !important;
+  color: #b96a7b !important;
+}

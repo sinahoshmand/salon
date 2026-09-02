@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { BsArrowDown } from "react-icons/bs";
@@ -27,17 +28,18 @@ type Props = {
 };
 
 export default function CollapsedMenu({ menu, open , setOpen }: Props) {
+  const t = useTranslations('adminMenu')
   return (
     <div
       onMouseLeave={() => setOpen(null)}
-      className={`absolute w-[180px] ${open === menu.id ? "visible" : "hidden"} px-5 
+      className={`absolute w-[180px]  ${open === menu.id ? "visible" : "hidden"} px-5 
          py-3 mb-4 right-15 
          top-0 z-50 bg-[#7C3AED]`}
     >
       <ul className="flex flex-col gap-4">
         <div className="flex w-full items-center   justify-between">
           <Link className="text-[14px] text-[#ffff]" href={menu.href}>
-            {menu.name}
+            {t(menu.name)}
           </Link>
           {menu.has_sub && <IoArrowDownCircle size={12} color="#ffff" />}
         </div>
@@ -48,7 +50,7 @@ export default function CollapsedMenu({ menu, open , setOpen }: Props) {
                 className="text-[12px] text-[#ffff]/80 hover:text-[#ffff]"
                 href={item.href}
               >
-                {item.name}
+                {t(item.name)}
               </Link>
             ))}
           </div>

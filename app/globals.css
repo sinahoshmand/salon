@@ -4,8 +4,9 @@
    cursor: pointer;
  }
 
- 
-
+  
+  
+   
 :root {
     --bg: #FFFCFA;
     --surface : #FFFFFF;
@@ -99,4 +100,15 @@
   .custom-scroll::-webkit-scrollbar-thumb:hover {
     background: #B96A7B;
   }
+
+
+  .swal2-container {
+    z-index: 999999 !important;
+  }
+   
+ 
+
+
+
+  
 

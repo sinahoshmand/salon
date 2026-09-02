@@ -7,6 +7,9 @@ import Service from "@/src/components/main/Service";
 import Testimonial from "@/src/components/main/Testimonial";
 import { Metadata } from "next";
 import {setRequestLocale } from "next-intl/server";
+import { getCategories } from "@/src/lib/api/categories";
+import getSalons from "@/src/lib/api/salons";
+ 
 
 export const metadata: Metadata = {
     title: "Home-SalonReserve",
@@ -16,15 +19,20 @@ export const metadata: Metadata = {
 export default async function Page({params} : {  params: Promise<{ locale: string }>}){
     const {locale} = await params
     setRequestLocale(locale);
+
+    // apis
+    const services = await getCategories(locale);
+    const salons = await getSalons(locale);
     return(
       <section>
          <Header locale={locale}/>
          <Benefit/>
-         <PopularSalon/>
-         <Service/>
+         <PopularSalon data={salons?.data}/>
+         <Service data={services?.data}/>
          <Explain/>
          <Testimonial/>
          <Article/>
+       
       </section>
        
     )

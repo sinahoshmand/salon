@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import SectionTitle from "../ui/SectionTitle";
 import StylistCard from "./StylistCard";
+import Data from "@/src/types/single-salon.type";
 
-export default function Stylist(){
+export default function Stylist({data} : {data : Data}){
     return(
         <section className="container-c mt-13">
            <SectionTitle title={'Meet Our Stylist'} link_name="View All Stylist"/>
@@ -34,15 +35,13 @@ export default function Stylist(){
         className="mt-3"
       >
         
-          <SwiperSlide   className="py-4">
-             <StylistCard/>
-          </SwiperSlide>
-          <SwiperSlide   className="py-4">
-             <StylistCard/>
-          </SwiperSlide>
-          <SwiperSlide   className="py-4">
-             <StylistCard/>
-          </SwiperSlide>
+       {data?.staffs?.map((item) => (
+         <SwiperSlide key={item.id} className="py-4">
+            <StylistCard item={item}/>
+        </SwiperSlide>
+       ))}
+         
+           
         
       </Swiper>
 

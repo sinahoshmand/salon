@@ -9,8 +9,8 @@ type Props = {
 
 export default function Card({ children }: Props) {
   return (
-    <div className="px-3.5 w-full  rounded-[3px] mt-5  ">
-      <div className="bg-[#ffff] w-full shadow-md  p-5">{children}</div>
+    <div className="px-3.5 w-full  mt-5  ">
+      <div className="bg-[#ffff] w-full shadow-md  rounded-[10px]  p-5">{children}</div>
     </div>
   );
 }

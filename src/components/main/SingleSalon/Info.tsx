@@ -1,21 +1,14 @@
 "use client";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BiCalendarEvent, BiPhone } from "react-icons/bi";
 import { MdMail } from "react-icons/md";
 import { BsClock } from "react-icons/bs";
 import { BsInstagram, BsTiktok, BsWhatsapp, BsYoutube } from "react-icons/bs";
-const icon = new L.Icon({
-  iconUrl: "/images/marker5.png",
-  iconRetinaUrl: "/images/marker5.png",
-  shadowUrl: "/images/marker-shadow.png",
-  iconSize: [38, 52],
-  iconAnchor: [19, 52],
-  popupAnchor: [0, -45],
+const Map = dynamic(() => import("./Map"), {
+  ssr: false,
 });
+import dynamic from "next/dynamic";
+
 export default function Info() {
   return (
     <section className="container-c mt-13">
@@ -88,35 +81,7 @@ export default function Info() {
               </div>
             </div>
             <div className="col-span-7">
-              <div className="overflow-hidden z-0 rounded-[8px] border border-[var(--border)] shadow-lg">
-                <MapContainer
-                  center={[40.7128, -74.006]} // Tehran
-                  zoom={14}
-                  scrollWheelZoom={false}
-                  className="h-[250px] w-full"
-                >
-                  <TileLayer
-                    attribution="© OpenStreetMap"
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-
-                  <Marker position={[40.7128, -74.006]} icon={icon}>
-                    <Popup>
-                      <div className="space-y-1">
-                        <h3 className="font-semibold">Beauty Salon</h3>
-
-                        <p className="text-sm text-gray-500">
-                          Premium Beauty Services
-                        </p>
-
-                        <button className="mt-2 rounded-lg bg-pink-500 px-3 py-2 text-white">
-                          View Salon
-                        </button>
-                      </div>
-                    </Popup>
-                  </Marker>
-                </MapContainer>
-              </div>
+                  <Map/>
             </div>
           </div>
         </div>

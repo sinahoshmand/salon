@@ -2,7 +2,7 @@
 
 import { Link } from "@/src/i18n/navigation";
 import Image from "next/image";
-import { FaHeart, FaListAlt, FaStar } from "react-icons/fa";
+import { FaHeart, FaListAlt, FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
@@ -10,14 +10,16 @@ import { BiHeart } from "react-icons/bi";
 import { useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { MdVerified } from "react-icons/md";
-export default function Item() {
+import Data from "@/src/types/single-salon.type";
+import { formatDollar } from "@/src/helper/price";
+export default function Item({ item }: { item: Data }) {
   const [hoverd, setHoverd] = useState<boolean>(false);
   return (
     <div className="flex flex-col mt-6">
       <div
         className="bg-[var(--surface)] hover:shadow-[0_0_10px_var(--primary)] shadow-sm transition-all scale-100 
       hover:scale-102 duration-300 hover:border-[var(--primary)] 
-      border border-[var(--border)] rounded-[10px] p-2"
+      border border-[var(--border)] rounded-[10px] px-2 py-4"
       >
         <div className="grid grid-cols-12 gap-3">
           <div className="col-span-4 relative">
@@ -43,7 +45,8 @@ export default function Item() {
               <p className=" text-[12px] ">Verified</p>
             </div>
             <Image
-              src={"/images/salon.jpg"}
+              unoptimized
+              src={item.image}
               className="rounded-[10px] object-cover w-[290px] h-[210px]"
               width={800}
               height={600}
@@ -51,23 +54,27 @@ export default function Item() {
             />
           </div>
           <div className="col-span-5">
-            <div className="flex flex-col mt-3">
-              <Link href={"/salon/number-one"}>
+            <div className="flex flex-col  ">
+              <Link href={`/salon/${item.slug}`}>
                 <h2
-                  className="text-[var(--text)] 
+                  className="text-[var(--text)] mb-1 
                           transition-all duration-300 hover:text-[var(--primary)] 
                           font-bold text-[22px]"
                 >
-                  Luxe Beuty Studio
+                  {item.name}
                 </h2>
+                <span className="  text-[13px] mt-1 items-center text-[var(--secondary-text)] flex gap-1">
+                  <FaMapMarkerAlt color="var(--secondary-text)" size={12} />
+                  {item.state},{item.city}
+                </span>
               </Link>
               <div className="flex flex-row gap-1.5 mt-3 items-center">
                 <span className="text-[13px] text-[var(--secondary-text)] font-semibold">
-                  5.0
+                  {item.ratings}
                 </span>
                 <Rating
                   style={{ maxWidth: 80 }}
-                  value={5}
+                  value={item.ratings}
                   readOnly
                   itemStyles={{
                     itemShapes: RoundedStar,
@@ -78,28 +85,26 @@ export default function Item() {
                   }}
                 />
                 <span className="text-[13px] text-[var(--secondary-text)]/80 font-semibold">
-                  (324 Reviews)
+                  ({item.reviews_count} Reviews)
                 </span>
               </div>
               <p
                 className="text-[var(--text)] mt-3 
-                            text-[15px]"
+                            text-[14px]"
               >
-                Apartment 14B, 425 Lexington Avenue
+                {item.address}
               </p>
               <div className="flex flex-row gap-2 flex-wrap mt-3">
-                <div className="bg-[var(--rose-gold)]/20  py-1 px-3 shadow-sm rounded-[8px]">
-                  <p className="text-[13px]   text-[var(--primary)]">Hair</p>
-                </div>
-                <div className="bg-[var(--rose-gold)]/20   py-1 px-3 shadow-sm rounded-[8px]">
-                  <p className="text-[13px]  text-[var(--primary)]">Makeup</p>
-                </div>
-                <div className="bg-[var(--rose-gold)]/20   py-1 px-3 shadow-sm rounded-[8px]">
-                  <p className="text-[13px]  text-[var(--primary)]">Nails</p>
-                </div>
-                <div className="bg-[var(--rose-gold)]/20   py-1 px-3 shadow-sm rounded-[8px]">
-                  <p className="text-[13px]  text-[var(--primary)]">Facial</p>
-                </div>
+                {item?.categories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className="bg-[var(--rose-gold)]/20  py-1 px-3 shadow-sm rounded-[8px]"
+                  >
+                    <p className="text-[13px]   text-[var(--primary)]">
+                      {cat.name}
+                    </p>
+                  </div>
+                ))}
               </div>
               <div className="flex flex-row items-center gap-4 mt-4">
                 <div className="flex flex-row gap-2 items-center">
@@ -122,9 +127,10 @@ export default function Item() {
               Starting From
             </p>
             <strong className="text-[25px] text-right inline-block text-[var(--primary)]">
-              $25
+              {formatDollar(item.start_from_price)}
             </strong>
-            <Link href={"/salon/number-one"}
+            <Link
+              href={"/salon/number-one"}
               className="w-full text-center bg-[var(--primary)] hover:bg-[var(--rose-gold)] 
                text-[15px] text-[var(--bg)] transition-all duration-300 px-2 py-3 rounded-[10px] mt-5"
             >

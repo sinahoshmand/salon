@@ -242,6 +242,7 @@ export default function Editor({ value, onChange , lang = "fa" }: Props) {
         onChange={(_, editor) => {
           onChange(editor.getData());
         }}
+       
       />
     </div>
   );

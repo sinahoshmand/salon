@@ -23,6 +23,7 @@ interface Menu {
   icon: IconType;
   has_sub: boolean;
   child: Child[];
+  hrefs?  : string[]
 }
 
 type Props = {
@@ -58,8 +59,8 @@ export default function MenuItem({ item, is_dropdown = false , setOpen , open }:
         >
           <button
             onClick={() => {openDrowpdown(item.id)}}
-            className={`flex w-full hover:bg-[#8B5CF6] transition-all duration-100
-          ${reseve === item.id ? "bg-[#8B5CF6]/90" : ""}  
+            className={`flex w-full hover:bg-[#5066A0] transition-all duration-100
+          ${reseve === item.id ? "bg-[#5066A0]/90" : ""}  
           ${collapsed ? "justify-center" : ""} rounded-[10px] 
            ${open === item.id && collapsed ? "bg-[#8B5CF6]/90" : ""}
           py-2.5 px-2  justify-between gap-3 items-center`}
@@ -67,7 +68,7 @@ export default function MenuItem({ item, is_dropdown = false , setOpen , open }:
             <div className={`flex gap-3 items-center  `}>
               <Icon color="#ffff" size={24} />
               {!collapsed && (
-                <span className="text-[#ffff] text-[14px]">{item.name}</span>
+                <span className="text-[#ffff] text-[14px]">{t(item.name)}</span>
               )}
             </div>
             {!collapsed && (
@@ -87,17 +88,16 @@ export default function MenuItem({ item, is_dropdown = false , setOpen , open }:
         </div>
       ) : (
         <Link
-        
-         
           href={item.href}
-          className={`flex w-full hover:bg-[#8B5CF6] transition-all duration-100
+          className={`flex w-full hover:bg-[#5066A0] transition-all duration-100
            rounded-[10px] ${collapsed ? "justify-center" : ""}  
-           ${open === item.id && collapsed ? "bg-[#8B5CF6]/90" : ""}
-           ${pathname === item.href ? "bg-[#8B5CF6]/90" : ""} py-2.5 px-2 
+           ${open === item.id && collapsed ? "bg-[#5066A0]/90" : ""}
+           ${item.hrefs?.some((href) => href === pathname)
+          ? "bg-[#5066A0]/90" : ""} py-2.5 px-2 
             justify-between gap-3 items-center`}
         >
           <div className={`flex gap-3 items-center`}>
-            <Icon color="#ffff" size={24} />
+            <Icon color="#ffff" size={22} />
             {!collapsed && (
               <span className="text-[#ffff] text-[14px]">{t(item.name)}</span>
             )}

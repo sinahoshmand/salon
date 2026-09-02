@@ -4,8 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import ServiceCard from "./ServiceCard";
 import services from "@/src/data/services";
+import Data from "@/src/types/single-salon.type";
 
-export default function Service() {
+export default function Service({data} : {data : Data}) {
   return (
     <section className="container-c mt-13">
       <SectionTitle title={`Our Service`} link_name="View All Services"/>
@@ -34,7 +35,7 @@ export default function Service() {
         }}
         className="mt-3"
       >
-        {services.map((item) => (
+        {data?.services?.map((item) => (
           <SwiperSlide key={item.id} className="py-4">
             <ServiceCard item={item}/>
           </SwiperSlide>
