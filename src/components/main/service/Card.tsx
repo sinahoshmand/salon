@@ -23,11 +23,11 @@ export default function Card({item} : Prop) {
       <div className="h-[160px] w-full relative overflow-hidden rounded-t-[10px]">
         <div className="absolute left-3.5 z-20 bottom-4 w-[65px] flex justify-center items-center p-2 h-[65px] rounded-full bg-[var(--surface)]">
         <Image  unoptimized alt={item.name} width={45} height={45} 
-          src={image(item.icon)} className="w-[45px] h-[45px]"/>
+          src={item.icon} className="w-[45px] h-[45px]"/>
         </div> 
       <Image
         unoptimized
-        src={image(item.image)}
+        src={item.image}
         className="h-[160px] scale-100 transition-all 
         duration-300 group-hover:scale-105  object-cover"
         width={800}

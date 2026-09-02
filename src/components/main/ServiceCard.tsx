@@ -30,7 +30,7 @@ export default function ServiceCard({item} : Prop) {
             items-center justify-center gap-2 py-5 px-4 border-2 w-[90px] h-[90px] border-[var(--border)] rounded-full"
       >
         <Image  unoptimized alt={item.name} width={45} height={45} 
-        src={image(item.icon)} className="w-[45px] h-[45px]"/>
+        src={item.icon} className="w-[45px] h-[45px]"/>
       </Link>
 
       <p className="mt-3  text-[15px]  text-[var(--text)]">{item.name}</p>
