@@ -71,7 +71,7 @@ export default function Table() {
     {
       name: "Icon",
       cell: (row) => (
-        <Image unoptimized alt={row.name} src={image(row.icon)} width={60} height={60} 
+        <Image unoptimized alt={row.name} src={row.icon} width={60} height={60} 
            className="h-[30px] w-[30px] rounded-[15px]"/>
       ),
      
@@ -79,7 +79,7 @@ export default function Table() {
     {
       name: "Image",
       cell: (row) => (
-        <Image unoptimized alt={row.name} src={image(row.image)} width={60} height={60} 
+        <Image unoptimized alt={row.name} src={row.image} width={60} height={60} 
            className="h-[40px] w-[40px] rounded-[15px]"/>
       ),
    
