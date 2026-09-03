@@ -17,6 +17,8 @@ import Option from "./Option";
 import Image from "next/image";
 import { BsInstagram } from "react-icons/bs";
 import { FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { useSearchParams } from "next/navigation";
+import page from "@/app/[locale]/(admin)/admin/salons/fixed-times/[id]/page";
  
 
 interface Head {
@@ -39,21 +41,31 @@ interface Data {
 }
 
 export default function Table({salon_id} : {salon_id : string}) {
-  const [open , setOpen] = useState<boolean>(false)
-  const [openEdit , setOpenEdit] = useState<boolean>(false)
-  const [time_id , setTimeId] = useState<number|null>(null)
+  
   const t = useTranslations("admin-main-salon-pending");
-  const [search, setSearch] = useState<string | null>("");
-  const [page, setPage] = useState<number | null>(1);
+  const searchParams = useSearchParams();
+  
   const api = useApi();
   const { data: session, status } = useSession();
   const locale = useLocale();
+
+   // FilterParams
+   const search =  searchParams.get('search') ?? "";
+   const page =  searchParams.get('page') ?? "";
+
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["staffs", page, search, locale , salon_id],
     queryFn: async () => {
       const response = await api.get(
-        `/admin/salon-staff?id=${salon_id}&page=${page}&search=${search}`,
+        `/admin/salon-staff`,
+        {
+          params : {
+            search : search,
+            id : salon_id,
+            page : page
+          }
+        }
       );
       return response.data;
     },
@@ -188,7 +200,7 @@ export default function Table({salon_id} : {salon_id : string}) {
         responsive
       />
       </div>
-      {data && <Pagination meta={data?.meta} page={page} setPage={setPage} />}
+      {data && <Pagination meta={data?.meta}  />}
     </section>
   );
 }

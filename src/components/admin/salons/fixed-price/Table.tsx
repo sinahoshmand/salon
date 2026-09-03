@@ -14,6 +14,7 @@ import TableHead from "../../ui/TableHead";
 import WorkingHoursModal from "./TimePicker";
 import WorkingHoursModalEdit from "./TimePickerEdit";
 import DataTable, { TableColumn } from "react-data-table-component";
+import { useSearchParams } from "next/navigation";
  
 
 interface Head {
@@ -33,17 +34,26 @@ export default function Table({salon_id} : {salon_id : string}) {
   const [openEdit , setOpenEdit] = useState<boolean>(false)
   const [time_id , setTimeId] = useState<number|null>(null)
   const t = useTranslations("admin-main-salon-pending");
-  const [search, setSearch] = useState<string | null>("");
-  const [page, setPage] = useState<number | null>(1);
+ 
+  
   const api = useApi();
   const { data: session, status } = useSession();
   const locale = useLocale();
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["times", page, search, locale , salon_id],
+    queryKey: ["times", page, locale , salon_id],
     queryFn: async () => {
       const response = await api.get(
-        `/admin/salon-fixed-times?id=${salon_id}&page=${page}&search=${search}&lang=${locale}`,
+        `/admin/salon-fixed-times`,
+        {
+          params : {
+            lang : locale,
+            page : page,
+            id : salon_id
+          }
+        }
       );
       return response.data;
     },
@@ -101,6 +111,7 @@ export default function Table({salon_id} : {salon_id : string}) {
       <WorkingHoursModal setOpen={setOpen} open={open} salon_id={salon_id}/>
       <WorkingHoursModalEdit times={data?.data} time_id={time_id} setOpen={setOpenEdit} open={openEdit}/>
       <PageHeader
+        activeSearch={false}
         title={"تعریف ساعات رزرو"}
         meta={"تعریف ساعات رزرو"}
         back_href={`/admin/salons/detail/${salon_id}`}
@@ -117,7 +128,7 @@ export default function Table({salon_id} : {salon_id : string}) {
         responsive
       />
       </div>
-      {data && <Pagination meta={data?.meta} page={page} setPage={setPage} />}
+      {data && <Pagination meta={data?.meta} />}
     </section>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import simpleSearchParams from "@/src/helper/simpleSearchParams";
 import { Link } from "@/src/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { FaArrowLeft, FaPlus } from "react-icons/fa";
@@ -7,6 +8,7 @@ import { FiPlus, FiSearch } from "react-icons/fi";
 
 type Props = {
   title: string;
+  activeSearch?:boolean
   meta?: string | null;
   href?: string;
   back_href?: string;
@@ -18,6 +20,7 @@ export default function PageHeader({
   title,
   meta,
   setSearch,
+  activeSearch = true,
   href,
   back_href,
   setOpen,
@@ -42,8 +45,8 @@ export default function PageHeader({
       {/* Actions */}
       <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
         {/* Search */}
-        {setSearch && (
-          <div className="relative w-full sm:w-72 group">
+      
+         {activeSearch && <div className="relative w-full sm:w-72 group">
             <FiSearch
               size={17}
               className="
@@ -55,7 +58,7 @@ export default function PageHeader({
             />
 
             <input
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => simpleSearchParams('search' , e.target.value)}
               type="text"
               placeholder={`${t("search")} ${title}...`}
               className="
@@ -78,7 +81,7 @@ export default function PageHeader({
               "
             />
           </div>
-        )}
+        }
 
         {/* Add */}
         {href && (

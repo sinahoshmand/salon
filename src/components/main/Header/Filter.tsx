@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { BiCalendarEvent } from "react-icons/bi";
 import { BsStar } from "react-icons/bs";
 import { CgChevronRight } from "react-icons/cg";
-import { FaMapMarker, FaMapMarkerAlt, FaMarker, FaSearch } from "react-icons/fa";
+import { FaMapMarker, FaMapMarkerAlt, FaMarker, FaSearch, FaStar } from "react-icons/fa";
 import { IoStarSharp } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import { TbStars } from "react-icons/tb";
@@ -63,11 +63,11 @@ py-7
     >
       <div className="flex flex-col gap-2 ">
         <div className="flex flex-row gap-2 items-center">
-          <TbStars color="var(--champagne-gold)" size={23} />
+        <FaStar color="var(--primary)" size={18} />
           <h2 className="text-[var(--text)] text-[18px] font-bold">
             Find Your Perfect Salon
           </h2>
-          <TbStars color="var(--champagne-gold)" size={23} />
+         
         </div>
         {/* Button one */}
         <span className="text-[var(--secondary-text)] text-[14px] mt-4">

@@ -2,7 +2,7 @@
 import { BsScissors } from "react-icons/bs";
 import Card from "../../ui/Card";
 import { FaUsers } from "react-icons/fa6";
-import { FaCalendar, FaClock } from "react-icons/fa";
+import { FaCalendar, FaClock, FaComment, FaImage, FaInfo, FaQuestion } from "react-icons/fa";
 import { Link } from "@/src/i18n/navigation";
 import Data from "@/src/types/single-salon.type";
  
@@ -316,6 +316,394 @@ export default function Manage({data} : {data : Data}){
              <span className="
                text-[11px] font-semibold
                text-emerald-600
+               transition-transform duration-300
+               group-hover:translate-x-[-3px]
+             ">
+               مشاهده ←
+             </span>
+   
+           </div>
+   
+         </div>
+       </Link>
+
+
+          {/* Gallery Sec */}
+          <Link href={`#`}
+         type="button"
+         className="
+           group relative overflow-hidden
+           rounded-2xl border border-slate-100
+           bg-slate-50/40 p-5 text-right
+           transition-all duration-300
+           hover:-translate-y-1
+           hover:border-rose-100
+           hover:bg-white
+           hover:shadow-[0_10px_30px_rgba(16,185,129,0.08)]
+         "
+       >
+   
+         <div className="
+           absolute -right-10 -top-10
+           h-24 w-24 rounded-full
+           bg-rose-300/30 blur-2xl
+           transition-all duration-300
+           group-hover:bg-rose-300/40
+         " />
+   
+         <div className="relative">
+   
+           <div className="flex items-start justify-between">
+   
+             <div className="
+               flex h-12 w-12 items-center justify-center
+               rounded-xl
+               bg-rose-50
+               text-rose-600
+               ring-1 ring-rose-100
+               transition-all duration-300
+               group-hover:scale-105
+               group-hover:bg-rose-600
+               group-hover:text-white
+             ">
+               <FaImage size={20} />
+             </div>
+   
+             <span className="
+               flex h-8 w-8 items-center justify-center
+               rounded-lg bg-white
+               text-slate-300 shadow-sm
+               transition-all duration-300
+               group-hover:text-rose-500
+             ">
+               ←
+             </span>
+   
+           </div>
+   
+   
+           <div className="mt-5">
+   
+             <h3 className="text-sm font-bold text-slate-900">
+                تعریف گالری 
+             </h3>
+   
+             <p className="
+               mt-2
+               min-h-[40px]
+               text-[11px]
+               leading-5
+               text-slate-400
+             ">
+                   تعریف گالری
+             </p>
+   
+           </div>
+   
+   
+           <div className="
+             mt-5 flex items-center justify-between
+             border-t border-slate-100 pt-4
+           ">
+   
+             <span className="text-[10px] font-medium text-slate-400">
+                گالری سالن
+             </span>
+   
+             <span className="
+               text-[11px] font-semibold
+               text-rose-600
+               transition-transform duration-300
+               group-hover:translate-x-[-3px]
+             ">
+               مشاهده ←
+             </span>
+   
+           </div>
+   
+         </div>
+       </Link>
+
+
+    {/* Comments Sec */}
+      <Link href={`#`}
+         type="button"
+         className="
+           group relative overflow-hidden
+           rounded-2xl border border-slate-100
+           bg-slate-50/40 p-5 text-right
+           transition-all duration-300
+           hover:-translate-y-1
+           hover:border-gray-100
+           hover:bg-white
+           hover:shadow-[0_10px_30px_rgba(16,185,129,0.08)]
+         "
+       >
+   
+         <div className="
+           absolute -right-10 -top-10
+           h-24 w-24 rounded-full
+           bg-gray-300/30 blur-2xl
+           transition-all duration-300
+           group-hover:bg-gray-300/40
+         " />
+   
+         <div className="relative">
+   
+           <div className="flex items-start justify-between">
+   
+             <div className="
+               flex h-12 w-12 items-center justify-center
+               rounded-xl
+               bg-gray-50
+               text-gray-600
+               ring-1 ring-gray-100
+               transition-all duration-300
+               group-hover:scale-105
+               group-hover:bg-gray-600
+               group-hover:text-white
+             ">
+               <FaComment size={20} />
+             </div>
+   
+             <span className="
+               flex h-8 w-8 items-center justify-center
+               rounded-lg bg-white
+               text-slate-300 shadow-sm
+               transition-all duration-300
+               group-hover:text-gray-500
+             ">
+               ←
+             </span>
+   
+           </div>
+   
+   
+           <div className="mt-5">
+   
+             <h3 className="text-sm font-bold text-slate-900">
+                مدیریت نظرات
+             </h3>
+   
+             <p className="
+               mt-2
+               min-h-[40px]
+               text-[11px]
+               leading-5
+               text-slate-400
+             ">
+                  نظرات
+             </p>
+   
+           </div>
+   
+   
+           <div className="
+             mt-5 flex items-center justify-between
+             border-t border-slate-100 pt-4
+           ">
+   
+             <span className="text-[10px] font-medium text-slate-400">
+                نظرات درج شده سالن
+             </span>
+   
+             <span className="
+               text-[11px] font-semibold
+               text-gray-600
+               transition-transform duration-300
+               group-hover:translate-x-[-3px]
+             ">
+               مشاهده ←
+             </span>
+   
+           </div>
+   
+         </div>
+       </Link>
+
+
+        {/* Faq Sec */}
+      <Link href={`#`}
+         type="button"
+         className="
+           group relative overflow-hidden
+           rounded-2xl border border-slate-100
+           bg-slate-50/40 p-5 text-right
+           transition-all duration-300
+           hover:-translate-y-1
+           hover:border-orange-100
+           hover:bg-white
+           hover:shadow-[0_10px_30px_rgba(16,185,129,0.08)]
+         "
+       >
+   
+         <div className="
+           absolute -right-10 -top-10
+           h-24 w-24 rounded-full
+           bg-orange-300/30 blur-2xl
+           transition-all duration-300
+           group-hover:bg-orange-300/40
+         " />
+   
+         <div className="relative">
+   
+           <div className="flex items-start justify-between">
+   
+             <div className="
+               flex h-12 w-12 items-center justify-center
+               rounded-xl
+               bg-orange-50
+               text-orange-600
+               ring-1 ring-gray-100
+               transition-all duration-300
+               group-hover:scale-105
+               group-hover:bg-orange-600
+               group-hover:text-white
+             ">
+               <FaQuestion size={20} />
+             </div>
+   
+             <span className="
+               flex h-8 w-8 items-center justify-center
+               rounded-lg bg-white
+               text-slate-300 shadow-sm
+               transition-all duration-300
+               group-hover:text-orange-500
+             ">
+               ←
+             </span>
+   
+           </div>
+   
+   
+           <div className="mt-5">
+   
+             <h3 className="text-sm font-bold text-slate-900">
+                مدیریت پرسش و پاسخ
+             </h3>
+   
+             <p className="
+               mt-2
+               min-h-[40px]
+               text-[11px]
+               leading-5
+               text-slate-400
+             ">
+                  پرسش و پاسخ
+             </p>
+   
+           </div>
+   
+   
+           <div className="
+             mt-5 flex items-center justify-between
+             border-t border-slate-100 pt-4
+           ">
+   
+             <span className="text-[10px] font-medium text-slate-400">
+             پرسش و پاسخ سالن
+             </span>
+   
+             <span className="
+               text-[11px] font-semibold
+               text-gray-600
+               transition-transform duration-300
+               group-hover:translate-x-[-3px]
+             ">
+               مشاهده ←
+             </span>
+   
+           </div>
+   
+         </div>
+       </Link>
+
+
+          {/* Faq Sec */}
+      <Link href={`#`}
+         type="button"
+         className="
+           group relative overflow-hidden
+           rounded-2xl border border-slate-100
+           bg-slate-50/40 p-5 text-right
+           transition-all duration-300
+           hover:-translate-y-1
+           hover:border-pink-100
+           hover:bg-white
+           hover:shadow-[0_10px_30px_rgba(16,185,129,0.08)]
+         "
+       >
+   
+         <div className="
+           absolute -right-10 -top-10
+           h-24 w-24 rounded-full
+           bg-pink-300/30 blur-2xl
+           transition-all duration-300
+           group-hover:bg-pink-300/40
+         " />
+   
+         <div className="relative">
+   
+           <div className="flex items-start justify-between">
+   
+             <div className="
+               flex h-12 w-12 items-center justify-center
+               rounded-xl
+               bg-pink-50
+               text-pink-600
+               ring-1 ring-gray-100
+               transition-all duration-300
+               group-hover:scale-105
+               group-hover:bg-pink-600
+               group-hover:text-white
+             ">
+               <FaInfo size={20} />
+             </div>
+   
+             <span className="
+               flex h-8 w-8 items-center justify-center
+               rounded-lg bg-white
+               text-slate-300 shadow-sm
+               transition-all duration-300
+               group-hover:text-pink-500
+             ">
+               ←
+             </span>
+   
+           </div>
+   
+   
+           <div className="mt-5">
+   
+             <h3 className="text-sm font-bold text-slate-900">
+                 سایر اطلاعات
+             </h3>
+   
+             <p className="
+               mt-2
+               min-h-[40px]
+               text-[11px]
+               leading-5
+               text-slate-400
+             ">
+                سایر اطلاعات
+             </p>
+   
+           </div>
+   
+   
+           <div className="
+             mt-5 flex items-center justify-between
+             border-t border-slate-100 pt-4
+           ">
+   
+             <span className="text-[10px] font-medium text-slate-400">
+             سایر اطلاعات سالن
+             </span>
+   
+             <span className="
+               text-[11px] font-semibold
+               text-gray-600
                transition-transform duration-300
                group-hover:translate-x-[-3px]
              ">

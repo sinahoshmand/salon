@@ -12,6 +12,7 @@ import { image } from "@/src/helper/image";
 import Loading from "../ui/Loading";
 import ErrorLoading from "../ui/ErrorLoadin";
 import DataTable, { TableColumn } from "react-data-table-component";
+import { useSearchParams } from "next/navigation";
 
 
 
@@ -28,22 +29,36 @@ interface Data {
 
 export default function Table() {
   const t = useTranslations('admin-main-services');
-  const [search, setSearch] = useState<string | null>("");
-  const [page, setPage] = useState<number | null>(1);
+  const searchParams = useSearchParams();
+  
+   
   const api = useApi();
   const { data: session, status } = useSession();
   const locale = useLocale();
 
+   // FilterParams
+   const search =  searchParams.get('search') ?? "";
+   const page = searchParams.get("page");
+
+   
+  
   const { data, isLoading, error } = useQuery({
     queryKey: ["categories", page, search , locale],
     queryFn: async () => {
       const response = await api.get(
-        `/admin/services?page=${page}&search=${search}&lang=${locale}`,
+        `/admin/services`, {
+          params : {
+            lang : locale,
+            search : search,
+            page:page
+          }
+        }
       );
       return response.data;
     },
-    placeholderData: keepPreviousData,
+     
     enabled: status === "authenticated",
+    
   });
 
   if (isLoading) return <Loading/>;
@@ -108,12 +123,13 @@ export default function Table() {
   
   return (
     <section>
+      
       <PageHeader
         title={t('title')}
         meta={t('meta')}
-        setSearch={setSearch}
         href="/admin/services/create"
       />
+    
       <div className="overflow-x-auto rounded-2xl border border-slate-100">
       <DataTable
         className="admin-data-table"
@@ -124,7 +140,7 @@ export default function Table() {
         responsive
       />
       </div>
-      {data && <Pagination meta={data?.meta} page={page} setPage={setPage} />}
+      {data && <Pagination meta={data?.meta} />}
     </section>
   );
 }

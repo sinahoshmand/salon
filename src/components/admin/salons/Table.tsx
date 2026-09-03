@@ -13,6 +13,7 @@ import Loading from "../ui/Loading";
 import ErrorLoading from "../ui/ErrorLoadin";
 import TableHead from "../ui/TableHead";
 import DataTable, { TableColumn } from "react-data-table-component";
+import { useSearchParams } from "next/navigation";
  
  
 
@@ -37,17 +38,27 @@ interface Data {
 
 export default function Table() {
   const t = useTranslations('admin-main-salon-pending');
-  const [search, setSearch] = useState<string | null>("");
-  const [page, setPage] = useState<number | null>(1);
+  const searchParams = useSearchParams();
+   
   const api = useApi();
   const { data: session, status } = useSession();
   const locale = useLocale();
+
+   // FilterParams
+   const search =  searchParams.get('search') ?? "";
+   const page = searchParams.get("page");
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["salons", page, search , locale],
     queryFn: async () => {
       const response = await api.get(
-        `/admin/salons?page=${page}&search=${search}&lang=${locale}`,
+        `/admin/salons`, {
+          params : {
+            lang : locale,
+            page : page,
+            search : search
+          }
+        }
       );
       return response.data;
     },
@@ -122,7 +133,6 @@ export default function Table() {
       <PageHeader
         title={t('title')}
         meta={t('meta')}
-        setSearch={setSearch}
         href="/admin/salons/create"
       />
       <div className="overflow-x-auto rounded-2xl border border-slate-100">
@@ -135,7 +145,7 @@ export default function Table() {
         responsive
       />
       </div>
-      {data && <Pagination meta={data?.meta} page={page} setPage={setPage} />}
+      {data && <Pagination meta={data?.meta}   />}
     </section>
   );
 }

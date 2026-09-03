@@ -10,6 +10,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Loading from "../ui/Loading";
 import ErrorLoading from "../ui/ErrorLoadin";
 import DataTable, { TableColumn } from "react-data-table-component";
+import { useSearchParams } from "next/navigation";
 
 
 
@@ -25,17 +26,30 @@ interface Data {
 
 export default function Table() {
   const t = useTranslations('admin-main-menus');
-  const [search, setSearch] = useState<string | null>("");
-  const [page, setPage] = useState<number | null>(1);
+  const searchParams = useSearchParams();
+   
   const api = useApi();
   const { data: session, status } = useSession();
   const locale = useLocale();
 
+
+    // FilterParams
+  const search =  searchParams.get('search') ?? "";
+  const page =  searchParams.get('page') ?? "";
+
+  
   const { data, isLoading, error } = useQuery({
     queryKey: ["menus", page, search , locale],
     queryFn: async () => {
       const response = await api.get(
-        `/admin/menus?page=${page}&search=${search}&lang=${locale}`,
+        `/admin/menus`,
+        {
+          params : {
+            locale : locale,
+            page : page,
+            search : search
+          }
+        }
       );
       return response.data;
     },
@@ -94,7 +108,6 @@ export default function Table() {
       <PageHeader
         title={t('title')}
         meta={t('meta')}
-        setSearch={setSearch}
         href="/admin/menus/create"
       />
       <div className="overflow-x-auto rounded-2xl border border-slate-100">
@@ -107,7 +120,7 @@ export default function Table() {
         responsive
       />
       </div>
-      {data && <Pagination meta={data?.meta} page={page} setPage={setPage} />}
+      {data && <Pagination meta={data?.meta}  />}
     </section>
   );
 }

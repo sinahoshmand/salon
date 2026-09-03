@@ -203,6 +203,7 @@ export default function Filter() {
           }
           renderTrack={({ props, children }) => (
             <div
+             key={Math.random()}
               {...props}
               className="h-2 w-full rounded-full"
               style={{

@@ -15,6 +15,7 @@ import date from "@/src/helper/date";
 import Jalali from "@/src/helper/jalali";
 import WorkingHoursModal from "./TimePicker";
 import DataTable, { TableColumn } from "react-data-table-component";
+import { useSearchParams } from "next/navigation";
 
 type Time = {
   id: string;
@@ -47,17 +48,30 @@ export default function Table({
   const [openEdit, setOpenEdit] = useState<boolean>(false);
   const [time_id, setTimeId] = useState<number | null>(null);
   const t = useTranslations("admin-main-salon-pending");
-  const [search, setSearch] = useState<string | null>("");
-  const [page, setPage] = useState<number | null>(1);
+  const searchParams = useSearchParams(); 
+ 
   const api = useApi();
   const { data: session, status } = useSession();
   const locale = useLocale();
+
+
+    // FilterParams
+    const search =  searchParams.get('search') ?? "";
+    const page = searchParams.get("page");
+
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["times", page, search, locale, service_id],
     queryFn: async () => {
       const response = await api.get(
-        `/admin/reservation/dates/${service_id}/?page=${page}&search=${search}&lang=${locale}`,
+        `/admin/reservation/dates/${service_id}`,
+        {
+          params : {
+            search : search,
+            lang : locale,
+            page : page
+          }
+        }
       );
       return response.data;
     },
@@ -167,7 +181,7 @@ export default function Table({
         responsive
       />
       </div>
-      {data && <Pagination meta={data?.meta} page={page} setPage={setPage} />}
+      {data && <Pagination meta={data?.meta}  />}
     </section>
   );
 }

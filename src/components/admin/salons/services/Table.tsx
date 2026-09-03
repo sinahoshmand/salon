@@ -14,6 +14,7 @@ import Image from "next/image";
 import { formatDollar } from "@/src/helper/price";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { duration } from "@/src/helper/duration";
+import { useSearchParams } from "next/navigation";
 
 interface Head {
   id: number;
@@ -32,17 +33,29 @@ interface Data {
 
 export default function Table({ id }: { id: string }) {
   const t = useTranslations("admin-main-menus");
-  const [search, setSearch] = useState<string | null>("");
-  const [page, setPage] = useState<number | null>(1);
+  const searchParams = useSearchParams();
+ 
   const api = useApi();
   const { data: session, status } = useSession();
   const locale = useLocale();
+
+    // FilterParams
+    const search =  searchParams.get('search') ?? "";
+    const page =  searchParams.get('page') ?? "";
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["services", page, search, locale, id],
     queryFn: async () => {
       const response = await api.get(
-        `/admin/salon-services?id=${id}&page=${page}&search=${search}&lang=${locale}`,
+        `/admin/salon-services`,
+        {
+          params : {
+            lang : locale,
+            search : search,
+            page : page,
+            id : id
+          }
+        }
       );
       return response.data;
     },
@@ -116,7 +129,6 @@ export default function Table({ id }: { id: string }) {
     <section>
       <PageHeader
         title={"مدیریت سرویس سالن"}
-        setSearch={setSearch}
         href={`/admin/salons/services/${id}/create`}
         back_href={`/admin/salons/detail/${id}`}
       />
@@ -130,7 +142,7 @@ export default function Table({ id }: { id: string }) {
         responsive
       />
       </div>
-      {data && <Pagination meta={data?.meta} page={page} setPage={setPage} />}
+      {data && <Pagination meta={data?.meta}   />}
     </section>
   );
 }

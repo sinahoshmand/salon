@@ -1,5 +1,8 @@
 "use client";
 
+import simpleSearchParams from "@/src/helper/simpleSearchParams";
+import { useSearchParams } from "next/navigation";
+
 interface Link {
   url: string,
   link: string,
@@ -21,11 +24,18 @@ interface Meta {
 
 type Props = {
   meta: Meta,
-  setPage: React.Dispatch<React.SetStateAction<number | null>>,
-  page: number | null,
+  setPage?: React.Dispatch<React.SetStateAction<number | null>>,
+  page?: number | null,
 };
 
 export default function Pagination({ meta, page, setPage }: Props) {
+
+ 
+
+  const searchParams = useSearchParams();
+  const PageInfo = searchParams.get("page") ?? "1";
+
+
   return (
     <>
    {meta.last_page !== 1 && <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
@@ -36,7 +46,12 @@ export default function Pagination({ meta, page, setPage }: Props) {
       <div className="flex items-center gap-1">
         <button
           disabled={meta.current_page === 1}
-          onClick={() => setPage(meta.current_page - 1)}
+          onClick={() => {
+            const page = meta.current_page - 1;
+            page === 1
+              ? simpleSearchParams("page")
+              : simpleSearchParams("page", String(page));
+          }}
           className={`px-4  text-[12px] py-2 rounded-xl border border-slate-200 
              ${meta.current_page === 1 ? " bg-slate-300 text-slate-500 cursor-not-allowed" : "hover:bg-slate-50"}
              transition-all`}
@@ -59,12 +74,18 @@ export default function Pagination({ meta, page, setPage }: Props) {
                  ):(
 
                   <button
-                  disabled={link.page === page}
+                  disabled={link.page === Number(PageInfo)}
                   key={index}
-                  onClick={() => setPage(Number(link.page))}
+                  onClick={() => {
+                    if (link.page === 1) {
+                      simpleSearchParams("page");
+                    } else {
+                      simpleSearchParams("page", link.label);
+                    }
+                  }}
                   className={`w-8.5 h-8.5 flex items-center justify-center text-[12px] rounded-xl transition-all
                       ${
-                        link.page === page
+                        link.page === Number(PageInfo)
                           ? "bg-slate-300 text-slate-500 cursor-not-allowed"
                           : "bg-[#405189] text-white hover:bg-[#405189]/50"
                       }
@@ -80,10 +101,15 @@ export default function Pagination({ meta, page, setPage }: Props) {
         ))}
 
         <button
-          disabled={meta.last_page === page}
-          onClick={() => setPage(meta.current_page + 1)}
+          disabled={meta.last_page === Number(PageInfo)}
+          onClick={() => {
+            const page = meta.current_page + 1;
+            page === 1
+              ? simpleSearchParams("page")
+              : simpleSearchParams("page", String(page));
+          }}
           className={`px-4 py-2 rounded-xl text-[12px] border border-slate-200 
-             ${meta.last_page === page ? " bg-slate-300 text-slate-500 cursor-not-allowed" : "hover:bg-slate-50"}
+             ${meta.last_page === Number(PageInfo) ? " bg-slate-300 text-slate-500 cursor-not-allowed" : "hover:bg-slate-50"}
              transition-all`}
         >
           بعدی
