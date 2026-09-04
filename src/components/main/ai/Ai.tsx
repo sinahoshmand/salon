@@ -130,7 +130,7 @@ export default function AiChat() {
           >
             {/* Welcome */}
             {chats?.map((chat, index) => (
-              <div>
+              <div key={index}>
                 <div className="flex justify-end">
                   <div className="max-w-[80%] rounded-2xl rounded-tr-md bg-[var(--primary)] px-4 py-3 text-sm leading-6 text-[var(--bg)]">
                     {chat.user}

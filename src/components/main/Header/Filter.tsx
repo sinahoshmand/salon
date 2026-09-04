@@ -1,20 +1,39 @@
 "use client";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { BiCalendarEvent } from "react-icons/bi";
 import { BsStar } from "react-icons/bs";
 import { CgChevronRight } from "react-icons/cg";
-import { FaMapMarker, FaMapMarkerAlt, FaMarker, FaSearch, FaStar } from "react-icons/fa";
-import { IoStarSharp } from "react-icons/io5";
+import { FaMapMarkerAlt, FaSearch, FaStar } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
-import { TbStars } from "react-icons/tb";
+import ServiceModal from "./modal/ServiceModal";
+import Image from "next/image";
+import { FaQuestion } from "react-icons/fa6";
+import { IconType } from "react-icons";
+import { number } from "motion";
+import { Link, useRouter } from "@/src/i18n/navigation";
+import simpleSearchParams from "@/src/helper/simpleSearchParams";
+import LocationModal from "./modal/LocationModal";
 gsap.registerPlugin(ScrollTrigger);
+
+type Service = {
+  name: string;
+  id : number|null,
+  icon: string|null;
+};
+
 export default function Filter() {
+  const router = useRouter();
+  const [openService, setOpenService] = useState<boolean>(false);
+  const [openLocation, setOpenLocation] = useState<boolean>(false);
   const section = useRef<HTMLHeadingElement>(null);
-  const [service, setService] = useState<string>("Hair Styling");
-  const [location, setLocation] = useState<string>("New York,NY");
+  const [service, setService] = useState<Service>({
+    id : null,
+    name: "Select Your Service",
+    icon : null,
+  });
+  const [location, setLocation] = useState<string|null>(null);
   const [from_date, setDateFrom] = useState<string>("2025/05/25");
   const [to_date, setDateTo] = useState<string>("2025/06/30");
   const [rate, setRate] = useState<number>(4);
@@ -23,12 +42,10 @@ export default function Filter() {
     gsap.fromTo(
       section.current,
       {
-        
         opacity: 0,
       },
-      
+
       {
-       
         opacity: 1,
         duration: 0.9,
         ease: "power3.out",
@@ -37,11 +54,9 @@ export default function Filter() {
           start: "top 80%",
           toggleActions: "play reverse play reverse",
         },
-      }
+      },
     );
   }, []);
-
-
 
   return (
     <div
@@ -61,26 +76,56 @@ px-6
 py-7
 "
     >
+      <ServiceModal
+        open={openService}
+        setOpen={setOpenService}
+        setService={setService}
+        service={service}
+      />
+     <LocationModal
+        open={openLocation}
+        setOpen={setOpenLocation}
+        setLocation={setLocation}
+        location={location}
+      />
+      
+
       <div className="flex flex-col gap-2 ">
         <div className="flex flex-row gap-2 items-center">
-        <FaStar color="var(--primary)" size={18} />
+          <FaStar color="var(--primary)" size={18} />
           <h2 className="text-[var(--text)] text-[18px] font-bold">
             Find Your Perfect Salon
           </h2>
-         
         </div>
         {/* Button one */}
         <span className="text-[var(--secondary-text)] text-[14px] mt-4">
           Service
         </span>
         <button
+          onClick={() => setOpenService(true)}
           className="w-full bg-[var(--bg)] px-3 py-3.5 items-center rounded-[12px] 
         shadow-sm border border-[var(--border)] flex  justify-between transition-all scale-100 hover:scale-105 gap-3"
         >
           <div className="flex items-center gap-3">
-            <MdWork color="var(--primary)" size={23} />
+            {service.icon  ? (
+               <Image
+               unoptimized
+               src={service.icon  ?? ""}
+               alt={service.name}
+               width={44}
+               height={44}
+               className="
+           h-6 w-6
+           object-contain
+           transition-transform duration-300
+           group-hover:scale-110
+         "
+             />
+            ) : (
+              <FaQuestion size={20} color="var(--primary)"/>
+            )}
             <span className="text-[14px] font-bold text-[var(--text)]">
-              {service}
+              {service?.name}
             </span>
           </div>
           <CgChevronRight color="var(--primary)" size={23} />
@@ -90,13 +135,14 @@ py-7
           Location
         </span>
         <button
+          onClick={() => setOpenLocation(true)}
           className="w-full bg-[var(--bg)] px-3 py-3.5 items-center rounded-[12px] 
         shadow-sm border border-[var(--border)] flex  justify-between transition-all scale-100 hover:scale-105 gap-3"
         >
           <div className="flex items-center gap-3">
             <FaMapMarkerAlt color="var(--primary)" size={23} />
             <span className="text-[14px] font-bold text-[var(--text)]">
-              {location}
+              {location ?? "Select Your Location"}
             </span>
           </div>
           <CgChevronRight color="var(--primary)" size={23} />
@@ -147,8 +193,8 @@ py-7
             </button>
           </div>
         </div>
-          {/* Button Four */}
-          <span className="text-[var(--secondary-text)] text-[14px] mt-2">
+        {/* Button Four */}
+        <span className="text-[var(--secondary-text)] text-[14px] mt-2">
           Rating
         </span>
         <button
@@ -163,13 +209,22 @@ py-7
           </div>
           <CgChevronRight color="var(--primary)" size={23} />
         </button>
-        <button className="w-full rounded-[10px] mt-3 flex
+        <button 
+          onClick={() => {
+            const params = new URLSearchParams();
+            if(service.id){ params.set("services", String(service.id))}
+
+            router.push(`/salons?${params.toString()}`);
+             
+          }}
+          className="w-full rounded-[10px] mt-3 flex
          items-center justify-center gap-2 
           transition-all duration-300
           scale-100 hover:scale-106
-         bg-[var(--primary)] text-[var(--bg)] py-3 px-3">
-               Search Salons
-              <FaSearch color="var(--bg)" size={18}/>
+         bg-[var(--primary)] text-[var(--bg)] py-3 px-3"
+        >
+          Search Salons
+          <FaSearch color="var(--bg)" size={18} />
         </button>
       </div>
     </div>
