@@ -21,19 +21,23 @@ export default function SalonList({ data }: { data: Data[] }) {
   const range =  searchParams.get("range")?.split(",").filter(Boolean) ?? [];
   const sort = searchParams.get("sort");
   const popular = searchParams.get("popular");
+  const fromDate = searchParams.get("fromD");
+  const toDate = searchParams.get("toD");
+  const rating = searchParams.get("rating");
 
   const {
     data: salons,
     isPending,
     isLoading,
   } = useQuery({
-    queryKey: ["salons", locale, search , location , services , sort , popular ,page , range],
+    queryKey: ["salons", locale, search , location , services , sort , rating , popular ,page , range , toDate , fromDate],
     queryFn: async () => {
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_ADDRESS}/main/salon-archive`, {
           params : {
             lang : locale,
             search : search,
+            rating : rating,
             location : location,
             page : page,
             sort : sort,
@@ -44,7 +48,9 @@ export default function SalonList({ data }: { data: Data[] }) {
               : undefined,
             range :   range.length > 0
             ? range.join(",")
-            : undefined,  
+            : undefined,
+            fromD : fromDate,
+            toD : toDate   
             
           }
         }
@@ -52,7 +58,8 @@ export default function SalonList({ data }: { data: Data[] }) {
       return res?.data;
     },
     initialData:
-    !search && !location && services.length === 0 && range.length === 0 && !popular && !sort && !page
+    !search && !location && services.length === 0
+     && range.length === 0 && !rating && !popular && !sort && !page && !fromDate && !toDate
       ? data
       : undefined,
     staleTime: 60 * 1000,

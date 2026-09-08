@@ -15,12 +15,13 @@ import { number } from "motion";
 import { Link, useRouter } from "@/src/i18n/navigation";
 import simpleSearchParams from "@/src/helper/simpleSearchParams";
 import LocationModal from "./modal/LocationModal";
+import DatePicker from "react-multi-date-picker";
 gsap.registerPlugin(ScrollTrigger);
 
 type Service = {
   name: string;
-  id : number|null,
-  icon: string|null;
+  id: number | null;
+  icon: string | null;
 };
 
 export default function Filter() {
@@ -28,15 +29,17 @@ export default function Filter() {
   const [openService, setOpenService] = useState<boolean>(false);
   const [openLocation, setOpenLocation] = useState<boolean>(false);
   const section = useRef<HTMLHeadingElement>(null);
+  const datePickerRef = useRef<any>(null);
+  const datePickerRef2 = useRef<any>(null);
   const [service, setService] = useState<Service>({
-    id : null,
+    id: null,
     name: "Select Your Service",
-    icon : null,
+    icon: null,
   });
-  const [location, setLocation] = useState<string|null>(null);
-  const [from_date, setDateFrom] = useState<string>("2025/05/25");
-  const [to_date, setDateTo] = useState<string>("2025/06/30");
-  const [rate, setRate] = useState<number>(4);
+  const [location, setLocation] = useState<string | null>(null);
+  const [from_date, setDateFrom] = useState<string|null>(null);
+  const [to_date, setDateTo] = useState<string|null>(null);
+  const [rate, setRate] = useState<number|null>(null);
 
   useEffect(() => {
     gsap.fromTo(
@@ -66,7 +69,7 @@ export default function Filter() {
         z-20
     opacity-85
 relative
-overflow-hidden
+ 
 rounded-[32px]
 border border-white/30
 bg-[var(--bg)]/65
@@ -82,13 +85,12 @@ py-7
         setService={setService}
         service={service}
       />
-     <LocationModal
+      <LocationModal
         open={openLocation}
         setOpen={setOpenLocation}
         setLocation={setLocation}
         location={location}
       />
-      
 
       <div className="flex flex-col gap-2 ">
         <div className="flex flex-row gap-2 items-center">
@@ -107,22 +109,22 @@ py-7
         shadow-sm border border-[var(--border)] flex  justify-between transition-all scale-100 hover:scale-105 gap-3"
         >
           <div className="flex items-center gap-3">
-            {service.icon  ? (
-               <Image
-               unoptimized
-               src={service.icon  ?? ""}
-               alt={service.name}
-               width={44}
-               height={44}
-               className="
+            {service.icon ? (
+              <Image
+                unoptimized
+                src={service.icon ?? ""}
+                alt={service.name}
+                width={44}
+                height={44}
+                className="
            h-6 w-6
            object-contain
            transition-transform duration-300
            group-hover:scale-110
          "
-             />
+              />
             ) : (
-              <FaQuestion size={20} color="var(--primary)"/>
+              <FaQuestion size={20} color="var(--primary)" />
             )}
             <span className="text-[14px] font-bold text-[var(--text)]">
               {service?.name}
@@ -150,18 +152,35 @@ py-7
         {/* Button tree */}
         <div className="grid grid-cols-1 md:grid-cols-2 mt-2 gap-5">
           <div className="flex flex-col gap-2">
+          <DatePicker
+              ref={datePickerRef}
+              value={from_date}
+              onChange={(date) => {
+                if (date) {
+                  setDateFrom(date.format("YYYY/MM/DD"));
+                }
+              }}
+              calendarPosition="bottom-right"
+              containerClassName="absolute"
+              inputClass="hidden"
+            />
             <span className="text-[14px] text-[var(--secondary-text)]">
               From Date
             </span>
 
+           
+
             <button
+              type="button"
+              onClick={() => datePickerRef.current?.openCalendar()}
               className="w-full bg-[var(--bg)] px-4 py-3.5 rounded-[12px]
-      border border-[var(--border)] shadow-sm
-      flex items-center justify-between
-      transition-all duration-200 hover:scale-105"
+        border border-[var(--border)] shadow-sm
+        flex items-center justify-between
+        transition-all duration-200 hover:scale-[1.02]"
             >
               <div className="flex items-center gap-3">
                 <BiCalendarEvent color="var(--primary)" size={22} />
+
                 <span className="text-[14px] font-semibold text-[var(--text)]">
                   {from_date}
                 </span>
@@ -172,11 +191,24 @@ py-7
           </div>
 
           <div className="flex flex-col gap-2">
+          <DatePicker
+              ref={datePickerRef2}
+              value={to_date}
+              onChange={(date) => {
+                if (date) {
+                  setDateTo(date.format("YYYY/MM/DD"));
+                }
+              }}
+              calendarPosition="bottom-right"
+              containerClassName="absolute"
+              inputClass="hidden"
+            />
             <span className="text-[13px] text-[var(--secondary-text)]">
               To Date
             </span>
 
             <button
+              onClick={() => datePickerRef2.current?.openCalendar()}
               className="w-full bg-[var(--bg)] px-4 py-3.5 rounded-[12px]
       border border-[var(--border)] shadow-sm
       flex items-center justify-between
@@ -194,28 +226,63 @@ py-7
           </div>
         </div>
         {/* Button Four */}
-        <span className="text-[var(--secondary-text)] text-[14px] mt-2">
-          Rating
-        </span>
-        <button
-          className="w-full bg-[var(--bg)] px-3 py-3.5 items-center rounded-[12px] 
-        shadow-sm border border-[var(--border)] flex  justify-between transition-all scale-100 hover:scale-105 gap-3"
-        >
-          <div className="flex items-center gap-3">
-            <BsStar color="var(--primary)" size={23} />
-            <span className="text-[14px] font-bold text-[var(--text)]">
-              {rate}
+        <span className="text-[14px] text-[var(--secondary-text)] mt-2">
+               Rating
             </span>
-          </div>
-          <CgChevronRight color="var(--primary)" size={23} />
-        </button>
-        <button 
+        <div className="grid grid-cols-3 gap-3 ">
+  {[3, 4, 5].map((value) => {
+    const isSelected = rate === value;
+
+    return (
+      <button
+        key={value}
+        type="button"
+        onClick={() => setRate(value)}
+        className={`
+          group relative flex items-center justify-center gap-1.5
+          rounded-[12px] border px-4 py-3
+          text-sm font-semibold
+          transition-all duration-200
+          ${
+            isSelected
+              ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-md shadow-[var(--primary)]/20 scale-[1.02]"
+              : "border-[var(--border)] bg-[var(--surface)] text-[var(--secondary-text)] hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 hover:text-[var(--primary)]"
+          }
+        `}
+      >
+        <span className="text-base">
+           <FaStar size={17} color="gold"/>
+        </span>
+
+        <span>{value}</span>
+
+        <span className="text-xs opacity-70">
+         +
+        </span>
+      </button>
+    );
+  })}
+</div>
+        <button
           onClick={() => {
             const params = new URLSearchParams();
-            if(service.id){ params.set("services", String(service.id))}
+            if (service.id) {
+              params.set("services", String(service.id));
+            }
+            if (location) {
+              params.set("location", String(location));
+            }
+            if (from_date) {
+              params.set("fromD", String(from_date));
+            }
+            if (to_date) {
+              params.set("toD", String(to_date));
+            }
+            if (rate) {
+              params.set("rating", String(rate));
+            }
 
             router.push(`/salons?${params.toString()}`);
-             
           }}
           className="w-full rounded-[10px] mt-3 flex
          items-center justify-center gap-2 
